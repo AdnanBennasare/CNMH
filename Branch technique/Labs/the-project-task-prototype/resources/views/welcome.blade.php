@@ -13,7 +13,7 @@
 
 <div class="container mt-5">
     <div class="text-center">
-        <h1 class="mb-4">Connexion Requise</h1>
+        <h1 class="mb-4">{{ __('welcomePage.Connexion Requise') }}</h1>
         <p>Vous devez d'abord vous connecter pour voir les tâches et les projets.</p>
         @if (Route::has('login'))
             <div class="mt-4">
