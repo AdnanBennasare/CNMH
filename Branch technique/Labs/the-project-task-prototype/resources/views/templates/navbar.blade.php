@@ -1,43 +1,57 @@
- <!-- Navbar -->
- <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item" >
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-    </ul>
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto mr-4">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <!-- Left navbar links -->
+  <ul class="navbar-nav mt-1">
+    <li class="nav-item">
+      <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars text-lg"></i></a>
+    </li>
+  </ul>
 
-      <div class="dropdown">
-        <div class="profile-icon" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          {{-- <i class="fa-regular fa-user"></i> --}}
-          
-          <div style="display: inline-block;">
-            <h6 style="display: inline; margin: 0;">
-                <i class="bi bi-person-circle mt-3" style="font-size: 31px; color:#7f7f7f;"></i>
-                {{ Auth::user()->name }}
-            </h6>
-            <i style="color: #7f7f7f; vertical-align: middle;" class="fa-solid fa-caret-down ml-2"></i>
-        </div>
-        
-          
-        </div>
-        <ul class="dropdown-menu" aria-labelledby="profileDropdown" style="right: -10px; left: auto;">
-          <li><a class="dropdown-item" href="{{ route('projects.profileEdit') }}">{{ __('Profil') }}</a></li>
-          <li>
-            <form method="POST" action="{{ route('logout') }}">
-              @csrf
-              <a class="dropdown-item" href="{{ route('logout') }}"
-                onclick="event.preventDefault(); this.closest('form').submit();">
-                {{ __('Déconnexion') }}
-              </a>
-            </form>
-          </li>
-        </ul>
+  <!-- Right navbar links -->
+  <ul class="navbar-nav ml-auto">
+
+    <!-- Messages Dropdown Menu -->
+    <li class="nav-item dropdown">
+      <a class="nav-link" data-toggle="dropdown" href="#">
+        <i class="bi bi-person-circle text-lg"></i>
+        {{ Auth::user()->name }}
+      </a>
+      <div class="dropdown-menu dropdown-menu dropdown-menu-right">
+        <a href="{{ route('projects.profileEdit') }}" class="dropdown-item">
+          {{ __('Pages-text.Profile') }}
+        </a>
+        <div class="dropdown-divider"></div>
+        <form method="POST" action="{{ route('logout') }}">
+          @csrf
+          <button type="submit" class="dropdown-item">{{ __('Pages-text.Log out') }}</button>
+        </form>
       </div>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
+    </li>
+
+
+  <!-- Messages Dropdown Menu -->
+  <li class="nav-item dropdown">
+    <a class="nav-link" data-toggle="dropdown" href="#">
+      <i class="bi bi-globe text-lg"></i>
+      {{__('Pages-text.language')}}
+    </a>
+    <div class="dropdown-menu dropdown-menu dropdown-menu-right">
+      <a class="dropdown-item" href="{{ route('localization', ['locale' => 'fr']) }}">Français</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="{{ route('localization', ['locale' => 'en']) }}">English</a>
+    </div>
+  </li>
+
+    {{-- full screen --}}
+    <li class="nav-item mt-1">
+      <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+        <i class="fas fa-expand-arrows-alt text-lg"></i>
+      </a>
+    </li>
+
+  </ul>
+</nav>
+<!-- /.navbar -->
+
+
 

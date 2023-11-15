@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Détail du Membre</h1>
+                    <h1 class="m-0">{{ __('Pages-text.Member Details') }}</h1>
                 </div><!-- /.col -->
 
             </div><!-- /.row -->
@@ -27,7 +27,7 @@
             <!-- general form elements -->
             <div class="col-md-8 card card-secondary card-create">
               <div class="card-header">
-                <h3 class="card-title">Afficher Membre</h3>
+                <h3 class="card-title">{{ __('Pages-text.Show Member Details') }}</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -36,7 +36,7 @@
 
                   <div class="card card-secondary card-outline">
                     <div class="card-header">
-                      <h5 class="card-title m-0">le Nom de Membre</h5>
+                      <h5 class="card-title m-0">{{ __('Pages-text.Member Name') }}</h5>
                     </div>
                     <div class="card-body">
 
@@ -47,7 +47,7 @@
                   </div>
                   <div class="card card-secondary card-outline">
                     <div class="card-header">
-                      <h5 class="card-title m-0">l'email de membre</h5>
+                      <h5 class="card-title m-0">{{ __('Pages-text.Member Email') }}</h5>
                     </div>
                     <div class="card-body">
 
@@ -64,7 +64,7 @@
               
 
                         <div class="ml-auto p-2">
-                            <a href="{{route('members.index')}}" class="btn btn-secondary">Annuler</a>
+                            <a href="{{route('members.index')}}" class="btn btn-secondary">{{ __('Pages-text.Cancel') }}</a>
                         </div>
                       </div>
 

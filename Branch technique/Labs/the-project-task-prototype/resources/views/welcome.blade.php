@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,15 +12,18 @@
 <body>
 
 <div class="container mt-5">
+    <x-language title="{{ __('Pages-text.language') }}" />
+
+
     <div class="text-center">
-        <h1 class="mb-4">{{ __('welcomePage.Connexion Requise') }}</h1>
-        <p>Vous devez d'abord vous connecter pour voir les tâches et les projets.</p>
+        <h1 class="mb-4">{{ __('Pages-text.log_in_Required') }}</h1>
+        <p>{{ __('Pages-text.you need to log in')}}</p>
         @if (Route::has('login'))
             <div class="mt-4">
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="btn text-black border border-dark">Tableau de bord</a>
+                    <a href="{{ url('/dashboard') }}" class="btn text-black border border-dark">{{ __('Pages-text.Dashboard')}}</a>
                 @else
-                    <a href="{{ route('login') }}" class="btn text-black border border-dark">Se connecter</a>                
+                    <a href="{{ route('login') }}" class="btn text-black border border-dark">{{ __('Pages-text.Sign in')}}</a>                
                 @endauth
             </div>
         @endif

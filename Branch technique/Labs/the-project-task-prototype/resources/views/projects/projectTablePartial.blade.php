@@ -3,10 +3,10 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Nom du Projet</th>
-                    <th>Description du Projet</th>
-                    <th>Date de Début</th>
-                    <th>date de fin</th>
+                    <th>{{ __('Pages-text.Project Name') }}</th>
+                    <th>{{ __('Pages-text.Project Description') }}</th>
+                    <th>{{ __('Pages-text.Start date') }}</th>
+                    <th>{{ __('Pages-text.End date') }}</th>
                    <th class="text-center" >Actions</th>
 
                 </tr>
@@ -64,18 +64,18 @@
                 @method("DELETE")
 
                 <div class="modal-header">
-                    <h3 class="modal-title fs-5" id="exampleModalLabel">vous êtes sûr de vouloir supprimer ce Project ?</h3>
+                    <h3 class="modal-title fs-5" id="exampleModalLabel">{{ __('Pages-text.Are you sure you want to delete this Project?') }}</h3>
                     <div type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" >
                         <i class="fa-solid fa-x"></i>
                     </div>
                 </div>
                 <div class="modal-body">
-                
+                   
                     <!-- Modal body content here -->
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-danger">Suprimer le projet</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Pages-text.Cancel') }}</button>
+                    <button type="submit" class="btn btn-danger">{{ __('Pages-text.Delete') }}</button>
                 </div>
             </form>
         </div>
@@ -125,7 +125,7 @@
         @if (Auth::user()->role == "project_leader")
         <div class="float-left d-flex">
             <a href="{{route('export.project')}}"style="height: 38px;" class="btn text-black border border-dark">
-                Exporter <i class="fa-solid fa-upload pl-2"></i>
+                {{ __('Pages-text.Export') }} <i class="fa-solid fa-upload pl-2"></i>
             </a>
             
   
@@ -133,7 +133,7 @@
             <form action="{{ route('import.project') }}" class="pl-1" method="post" enctype="multipart/form-data" id="importForm">
                 @csrf 
                 <input type="file" name="projects" id="formFileInput" style="position: absolute; left: -9999px;">
-                <button type="button" id="fileButton" class="btn text-black border border-dark">importer <i class="fa-solid fa-download pl-2"></i></button>
+                <button type="button" id="fileButton" class="btn text-black border border-dark">{{ __('Pages-text.Import') }} <i class="fa-solid fa-download pl-2"></i></button>
             </form>
 
             

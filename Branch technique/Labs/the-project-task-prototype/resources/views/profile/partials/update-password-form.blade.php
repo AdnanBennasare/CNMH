@@ -7,7 +7,7 @@
           <!-- jquery validation -->
           <div class="card card-success">
             <div class="card-header">
-              <h3 class="card-title"> <strong> Mettre à jour le mot de passe </strong></h3>
+              <h3 class="card-title"> <strong>{{ __('Pages-text.Update the Password')}}</strong></h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
@@ -19,12 +19,12 @@
 
 
               <div class="card-body">
-                <p>Assurez-vous que votre compte utilise un mot de passe long et aléatoire pour rester sécurisé.</p>
+                <p>{{ __('Pages-text.Make sure your account uses a long, random password to stay secure.')}}</p>
 
 
                 <div class="form-group">
-                  <label for="current_password">mot de passe actuel</label>
-                  <input type="password" name="current_password" class="form-control" id="current_password" placeholder="mot de passe actuel" autocomplete="current-password">
+                  <label for="current_password">{{ __('Pages-text.Current Password')}}</label>
+                  <input type="password" name="current_password" class="form-control" id="current_password" placeholder="{{ __('Pages-text.Current Password')}}" autocomplete="current-password">
                 <x-input-error :messages="$errors->updatePassword->get('current_password')"  />
                 </div>
 
@@ -32,16 +32,16 @@
 
 
                 <div class="form-group">
-                  <label for="password">nouveau mot de passe</label>
-                  <input type="password" name="password" class="form-control" id="password" placeholder="nouveau mot de passe" autocomplete="new-password" >
+                  <label for="password">{{ __('Pages-text.New Password')}}</label>
+                  <input type="password" name="password" class="form-control" id="password" placeholder="{{ __('Pages-text.New Password')}}" autocomplete="new-password" >
                   <x-input-error :messages="$errors->updatePassword->get('password')" />
 
                 </div>
 
 
         <div class="form-group">
-            <label for="password_confirmation">confirmation du mot de passe</label>
-            <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="confirmation du mot de passe" autocomplete="new-password" >
+            <label for="password_confirmation">{{ __('Pages-text.Password Confirmation')}}</label>
+            <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="{{ __('Pages-text.Password Confirmation')}}" autocomplete="new-password" >
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" />
           </div>
 
@@ -62,7 +62,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-success">Modifier le mot du pass</button>
+                <button type="submit" class="btn btn-success">{{ __('Pages-text.Update Password')}}</button>
               </div>
             </form>
           </div>

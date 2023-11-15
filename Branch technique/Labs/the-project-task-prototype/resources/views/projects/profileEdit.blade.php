@@ -6,7 +6,7 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-sm-6">
-                  <h1>Profile</h1>
+                  <h1>{{ __('Pages-text.Profile')}}</h1>
                 </div>  
               </div>
             </div><!-- /.container-fluid -->

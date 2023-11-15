@@ -10,7 +10,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Les projets</h1>
+                    <h1 class="m-0">{{ __('Pages-text.Projects') }}
+                    </h1>
                 </div><!-- /.col -->
 
             </div><!-- /.row -->
@@ -50,7 +51,7 @@
                       
                       <div class="input-group input-group-sm float-right search-container" style="width: 190px;">
                         <!-- SEARCH input -->
-                        <input style="height: 35px;" type="text" name="search" id="searchInput" class="form-control" placeholder="Rechercher...">
+                        <input style="height: 35px;" type="text" name="search" id="searchInput" class="form-control" placeholder="{{ __('Pages-text.Search') }}">
                         <div class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
                     </div>
               
@@ -91,8 +92,18 @@ $(document).ready(function() {
         console.log(deleteUrl);
 
         // Update modal content with the project name
-        $('#exampleModal .modal-body').html('<div>Si vous êtes sûr de vouloir supprimer ce projet <strong>"' + projectName + '"</strong> cliquez sur Supprimer pour continuer</div>');          
+        $('#exampleModal .modal-body').html(`
+    <div>
+        {{ __('Pages-text.Are you sure you want to delete this project') }}
+        <strong>"${projectName}"</strong>
+        {{ __('Pages-text.Click delete to procced to delete this project') }}
+    </div>
+`);
+        
         // Update form action URL
+
+
+
         $('#deleteForm').attr('action', deleteUrl);
     });
 });

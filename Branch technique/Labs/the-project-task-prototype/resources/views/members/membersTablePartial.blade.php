@@ -3,8 +3,8 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Le Nom de Membre</th>
-                    <th>L'email Membre</th>             
+                    <th>{{ __('Pages-text.Member Name') }}</th>
+                    <th>{{ __('Pages-text.Member Email') }}</th>             
                    <th class="text-center" >Actions</th>
 
                 </tr>
@@ -44,7 +44,7 @@
                 @method("DELETE")
 
                 <div class="modal-header">
-                    <h3 class="modal-title fs-5" id="exampleModalLabel">vous êtes sûr de vouloir supprimer ce Membre ?</h3>
+                    <h3 class="modal-title fs-5" id="exampleModalLabel">{{ __('Pages-text.Are you sure you want to delete this Member?') }}</h3>
                     <div type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" >
                         <i class="fa-solid fa-x"></i>
                     </div>
@@ -107,13 +107,13 @@
         @if (Auth::user()->role == "project_leader")
         <div class="float-left d-flex">
             <a href="{{route('export.member')}}" style="height: 38px;" class="btn text-black border border-dark">
-                Exporter <i class="fa-solid fa-upload pl-2"></i>
+                {{ __('Pages-text.Export') }} <i class="fa-solid fa-upload pl-2"></i>
             </a>
             
             <form action="{{ route('import.member') }}" class="pl-1" method="post" enctype="multipart/form-data" id="importForm">
                 @csrf 
                 <input type="file" name="members" id="formFileInputmembers" style="position: absolute; left: -9999px;">
-                <button type="button" id="fileButtonmembers" class="btn text-black border border-dark">Importer <i class="fa-solid fa-download pl-2"></i></button>
+                <button type="button" id="fileButtonmembers" class="btn text-black border border-dark">{{ __('Pages-text.Import') }} <i class="fa-solid fa-download pl-2"></i></button>
             </form>
 
             

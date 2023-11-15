@@ -7,14 +7,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Ajouter un Membre</h1>
+            <h1>{{ __('Pages-text.Add Member') }}</h1>
           </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">General Form</li>
-            </ol>
-          </div>
+  
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -26,7 +21,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Ajouter un Membre</h3>
+                <h3 class="card-title">{{ __('Pages-text.Add Member') }}</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -34,8 +29,8 @@
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="Name">le nom de Member</label>
-                    <input type="text" class="form-control" value="{{ old('name') }}" name="name" id="Name" placeholder="Enter Project Name">
+                    <label for="Name">{{ __('Pages-text.Member Name') }}</label>
+                    <input type="text" class="form-control" value="{{ old('name') }}" name="name" id="Name" placeholder="{{ __('Pages-text.Enter Member Name') }}">
                     <div style="color:red">
                         @error("name")
                         {{$message}}
@@ -45,8 +40,8 @@
                   <input type="hidden" value="member" name="role">
 
                   <div class="form-group">
-                    <label for="email">L'email de Member</label>
-                    <input type="text" class="form-control" value="{{ old('email') }}" id="email" name="email" placeholder="Enter L'email de Member">
+                    <label for="email">{{ __('Pages-text.Member Email') }}</label>
+                    <input type="text" class="form-control" value="{{ old('email') }}" id="email" name="email" placeholder="{{ __('Pages-text.Enter Member Email') }}">
                     <div style="color:red">
                         @error("email")
                         {{$message}}
@@ -56,8 +51,8 @@
                   </div>
                
                   <div class="form-group">            
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Password" required autocomplete="new-password" />
+                    <label for="password">{{ __('Pages-text.Password') }}</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Pages-text.Enter Member Password') }}" required autocomplete="new-password" />
                     @if($errors->has('password'))
                      <div class="alert alert-danger mt-2">
                         {{ $errors->first('password') }}
@@ -67,8 +62,8 @@
         
         
               <div class="form-group">                  
-                <label for="password_confirmation">Confirm Password</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="password_confirmation" value="{{old('password_confirmation')}}" required autocomplete="new-password" />
+                <label for="password_confirmation">{{ __('Pages-text.Confirm Password') }} </label>
+                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Pages-text.Confirm Password') }}" value="{{old('password_confirmation')}}" required autocomplete="new-password" />
                 @if($errors->has('password_confirmation'))
                  <div class="alert alert-danger mt-2">
                     {{ $errors->first('password_confirmation') }}
@@ -81,9 +76,9 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Ajouter Un membre</button>
+                  <button type="submit" class="btn btn-primary">{{ __('Pages-text.Add Member') }}</button>
            
-                    <a href="{{route('members.index')}}" type="submit" class="btn btn-secondary">Annuler</a>
+                    <a href="{{route('members.index')}}" type="submit" class="btn btn-secondary">{{ __('Pages-text.Cancel') }}</a>
   
                 </div>
               </form>

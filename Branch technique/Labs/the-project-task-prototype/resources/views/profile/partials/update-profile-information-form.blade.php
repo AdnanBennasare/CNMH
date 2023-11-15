@@ -7,7 +7,7 @@
           <!-- jquery validation -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title"> <strong> Informations de Profil </strong></h3>
+              <h3 class="card-title"> <strong>{{ __('Pages-text.Profile Information')}} </strong></h3>
             </div>
             <form id="send-verification" method="post" action="{{ route('verification.send') }}">
                 @csrf
@@ -19,10 +19,10 @@
                 @method('patch')
 
               <div class="card-body">
-                <p>Mettez à jour les informations de profil et l’adresse e-mail de votre compte.</p>
+                <p>{{ __('Pages-text.Update your account profile information and email address.')}}</p>
                 <div class="form-group">
-                    <label for="name">Le Nom</label>         
-                    <input type="text" name="name" class="form-control" value="{{old('name', $user->name)}}" id="name" placeholder="Enter name" required autofocus autocomplete="name" >
+                    <label for="name">{{ __('Pages-text.The Name')}}</label>         
+                    <input type="text" name="name" class="form-control" value="{{old('name', $user->name)}}" id="name" placeholder="{{ __('Pages-text.The Name')}}" required autofocus autocomplete="name" >
                     @if($errors->has('name'))
                     <div class="alert alert-danger mt-2">
                        {{ $errors->first('name') }}
@@ -32,9 +32,9 @@
        
 
                 <div class="form-group">
-                  <label for="email">Adresse E-mail
+                  <label for="email">{{ __('Pages-text.Email Adresse')}}
                   </label>
-                  <input type="email" name="email" class="form-control" id="email" value={{old('email', $user->email)}} required autocomplete="username" placeholder="Enter email">
+                  <input type="email" name="email" class="form-control" id="email" value={{old('email', $user->email)}} required autocomplete="username" placeholder="{{ __('Pages-text.Email Adresse')}}">
                   @if($errors->has('email'))
                   <div class="alert alert-danger mt-2">
                      {{ $errors->first('email') }}
@@ -74,7 +74,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">              
-                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                <button type="submit" class="btn btn-primary">{{ __('Pages-text.Save')}}</button>
               </div>
             </form>
           </div>

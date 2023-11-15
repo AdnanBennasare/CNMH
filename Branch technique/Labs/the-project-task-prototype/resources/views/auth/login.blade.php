@@ -9,14 +9,14 @@
    <!-- /.login-logo -->
    <div class="card">
      <div class="card-body login-card-body">
-       <p class="login-box-msg">Connectez-vous pour commencer votre session</p>
+       <p class="login-box-msg">{{ __('Pages-text.log in needed') }}</p>
  
        <form method="POST" action="{{ route('login') }}">
         @csrf
 
         {{-- email --}}
          <div class="input-group mb-3">
-           <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="{{old('email')}}"  required autofocus autocomplete="username" />
+           <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('Pages-text.Email') }}" value="{{old('email')}}"  required autofocus autocomplete="username" />
                 
            <div class="input-group-append">
              <div class="input-group-text">
@@ -32,7 +32,7 @@
 
 {{-- password --}}
          <div class="input-group mb-3">
-          <input type="password" name="password" id="password" class="form-control" placeholder="Password" required autocomplete="new-password" />
+          <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Pages-text.Password') }}" required autocomplete="new-password" />
           
 
            <div class="input-group-append">
@@ -53,13 +53,14 @@
              <div class="icheck-primary">
                <input type="checkbox" id="remember">
                <label for="remember">
-                 Remember Me
+                {{ __('Pages-text.Remember Me') }}
+                 
                </label>
              </div>
            </div>
            <!-- /.col -->
            <div class="col-4">
-             <button type="submit" class="btn btn-primary">connecter</button>
+             <button type="submit" class="btn btn-primary">{{ __('Pages-text.Sign in') }}</button>
            </div>
            <!-- /.col -->
          </div>
@@ -68,15 +69,17 @@
  
        <p class="mb-1 mt-2">
         @if (Route::has('password.request'))
-        <a href="{{ route('password.request') }}">I forgot my password</a>
+        <a href="{{ route('password.request') }}">{{ __('Pages-text.I forgot my password') }}</a>
         @endif
        </p>
      </div>
      <!-- /.login-card-body -->
    </div>
  </div>
- 
+ <div style="margin-left:18%;" class="mt-4">
+  <x-language title="{{ __('Pages-text.language') }}" />
  </div>
+</div>
 @endsection
 
 
