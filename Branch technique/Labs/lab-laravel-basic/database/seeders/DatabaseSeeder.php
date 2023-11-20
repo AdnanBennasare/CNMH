@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Project;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,9 +14,20 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Project::factory()->create([
+            'name' => 'Portfolio',
+            'description' => 'Développement d\'un site web mettant en valeur nos compétences.',
+        ]);
+
+        Project::factory()->create([
+            'name' => 'Arbre des compétences',
+            'description' => 'Création d\'une application web pour l\'évaluation des compétences.',
+        ]);
+
+        Project::factory()->create([
+            'name' => 'CNMH',
+            'description' => 'Création d\'une application web pour la gestion des patients de centre CNMH.',
+        ]);
     }
 }
+
