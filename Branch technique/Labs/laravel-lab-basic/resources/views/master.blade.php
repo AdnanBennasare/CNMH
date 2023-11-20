@@ -5,15 +5,11 @@
 
     
 
-    <body class="hold-transition sidebar-mini layout-fixed">
-        <div class="wrapper">
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
 @include('layouts.navbar')
 @include('layouts.sidebar')
-
  @yield('section')
-
-
- 
 @include('layouts.scripts')
 @include('layouts.footer')
 </body>
