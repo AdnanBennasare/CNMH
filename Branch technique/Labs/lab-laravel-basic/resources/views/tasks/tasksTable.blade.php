@@ -3,10 +3,10 @@
                             <table class="table table-striped text-nowrap">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>name</th>
-                                        <th>Description</th>                    
-                                        <th>Action</th>
+                                        <th>Description</th>  
+                                        <th>project</th>                    
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>                     
@@ -15,19 +15,31 @@
 
                                         <td>{{$task->name}}</td>
                                         <td>{{$task->description}}</td>
-                                        <td>
-                                            <a href="././tache/index.html"
-                                                class="btn btn-sm btn-primary">Preview
+                                        <th>{{$task->project_id}}</th>                    
+
+                                        <td class="text-center" >
+                                            <a href="btn btn-primary"
+                                                ><i class="fa-regular fa-eye"></i>
                                             </a>
-                                        </td>
-                                        <td>
-                                            <a href="./edit.html" class="btn btn-sm btn-default"><i
+                    
+                                            <a href="{{route('tasks.edit', $task->id)}}" class="btn btn-sm btn-default"><i
                                                     class="fa-solid fa-pen-to-square"></i></a>
-                                            <button type="button" class="btn btn-sm btn-danger"><i
-                                                    class="fa-solid fa-trash"></i></button>
+                                                    
+                                        
+                                                <form action="{{route('tasks.destroy', $task->id)}}" method="post">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button class="btn btn-danger btn-sm">
+                                                        <i class="fas fa-trash">
+                                                        </i>                              
+                                                    </button>
+                                                </form>
                                         </td>
                                     </tr>               
                                         @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="card-footer">
+                            {{$tasks->links()}}
                         </div>

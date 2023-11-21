@@ -11,32 +11,33 @@
                     <div class="card-header">
                         <h3 class="card-title">Ajoute task</h3>
                     </div>
-                    <form method="Post" action="{{route('tasks.store')}}">
+                    <form method="Post" action="{{route('tasks.create')}}">
                         @csrf 
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Name</label>
+                                <label for="">Name</label>
                                 <input name="name" type="text" class="form-control"
-                                    id="exampleInputEmail1" placeholder="Enter email">
+                                    id="" placeholder="Enter Name">
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Description</label>
+                                <label for="">Description</label>
                                 <input name="description" type="text" class="form-control"
-                                    id="exampleInputPassword1" placeholder="Description">
+                                    id="" placeholder="Description">
                             </div>
 
-                            <select class="form-control">
+                            <label for="">Project</label>
+                            <select name="projectsid" class="form-control">
                                 <option selected>-- Select Project --</option>
                                 @foreach ($projects as $project)
-                                    <option value="{{ $project->name }}">{{ $project->name }}</option>
+                                    <option value="{{ $project->id }}">{{ $project->name }}</option>
                                 @endforeach
                             </select>
 
                         </div>
 
                         <div class="card-footer">
-                            <a href="./index.html" class="btn btn-default">Cancel</a>
+                            <a href="" class="btn btn-default">Cancel</a>
                             <button type="submit" class="btn btn-primary">ajouter project</button>
                         </div>
                     </form>
