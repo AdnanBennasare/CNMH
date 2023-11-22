@@ -8,10 +8,22 @@ use Illuminate\Http\Request;
 
 class TasksController extends Controller
 {
-    public function index(){
-        $projects = Project::all();
-        $tasks =  Task::paginate(2);
-        return view('tasks.index', compact('projects', 'tasks'));
+    // public function index(){
+    //     $tasks =  Task::paginate(2);
+    //     return view('tasks.index', compact('tasks'));
+    // }
+
+    public function index(Request $request){
+        $tasks = Task::paginate(2);
+        if($request->ajax()){
+            dd('hey');
+            $seachQuery = $request->get('searchValue');
+            $seachQuery = str_replace(' ','%', $seachQuery);
+            $tasks = Task::query()->where('name','like','%'.$seachQuery. '%')->orWhere('description' , 'like' , '%' . $seachQuery . '%')->paginate(2);
+            return view('tasks.tasksTable' , compact('tasks'))->render();
+        }
+       
+        return view('tasks.index', compact('tasks'));
     }
 
      public function create(){
@@ -29,6 +41,8 @@ class TasksController extends Controller
 
 
     public function store(Request $request){
+
+        // dd($request);
         $request->validate([
             'name' => 'required',
             'description' => 'nullable',

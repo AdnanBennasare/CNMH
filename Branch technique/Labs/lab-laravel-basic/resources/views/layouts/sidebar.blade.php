@@ -20,14 +20,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="../../member/index.html" class="nav-link ">
-                                <i class="fa-solid fa-users pl-1 pr-1"></i>
-                                <p>
-                                    Members
-                                </p>
-                            </a>
-                        </li>
+            
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

@@ -1,5 +1,4 @@
- 
-                        <div class="card-body table-responsive p-0">
+<div class="card-body table-responsive p-0">
                             <table class="table table-striped text-nowrap">
                                 <thead>
                                     <tr>
@@ -9,7 +8,7 @@
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>                     
+                                <tbody id="tbody">                     
                                         @foreach ($tasks as $task)    
                                     <tr>
 
@@ -18,10 +17,7 @@
                                         <th>{{$task->project_id}}</th>                    
 
                                         <td class="text-center" >
-                                            <a href="btn btn-primary"
-                                                ><i class="fa-regular fa-eye"></i>
-                                            </a>
-                    
+                                             
                                             <a href="{{route('tasks.edit', $task->id)}}" class="btn btn-sm btn-default"><i
                                                     class="fa-solid fa-pen-to-square"></i></a>
                                                     
