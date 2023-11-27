@@ -32,7 +32,7 @@ Utilisez la syntaxe Markdown pour intégrer les images.
 [Documentation](https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 
 ### Solution 
-[livre-des-recettes](https://github.com/AdnanBennasare/CNMH/tree/master/Branch%20technique/Labs/lap-Markdown/livre-des-recettes.md)
+[livre-des-recettes](https://github.com/AdnanBennasare/CNMH/blob/master/Branch%20technique/Labs/lab-Markdown/livre-des-recettes.md)
 
 
 
