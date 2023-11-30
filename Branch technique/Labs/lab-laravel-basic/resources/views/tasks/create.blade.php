@@ -11,7 +11,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Ajoute task</h3>
                     </div>
-                    <form method="Post" action="{{route('tasks.create')}}">
+                    <form method="post" action="{{route('tasks.store')}}">
                         @csrf 
                         <div class="card-body">
                             <div class="form-group">
