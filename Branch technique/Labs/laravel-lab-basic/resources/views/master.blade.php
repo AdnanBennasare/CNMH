@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('layouts.head')
-<body>
-
-    
 
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

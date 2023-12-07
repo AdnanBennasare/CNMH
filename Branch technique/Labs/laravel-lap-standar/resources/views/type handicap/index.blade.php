@@ -133,6 +133,7 @@ $(document).ready(function() {
 
     $('#searchInput').keyup(function() {
         query = $(this).val();
+        console.log(query);
         page = 1;
         updateUrl();
 
@@ -243,7 +244,7 @@ $(document).ready(function() {
                });
 
 
-
+²
                $('#pagination-container').html(response.links);
                console.log(response.links);
                
