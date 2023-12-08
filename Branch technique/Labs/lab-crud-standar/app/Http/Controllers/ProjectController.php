@@ -50,6 +50,38 @@ class ProjectController extends Controller
             $this->projectRepository->create($input);
             return redirect()->route('projects.index')->with('success', 'projet ajouté avec succès');
         }
+        public function edit($id)
+        {
+            $project = Project::find($id);
+            return view('projects.edit', compact('project'));
+        }
+
+        public function update(Request $request, $id)
+        {     
+            $project = Project::find($id);
+        
+            if (!$project) {
+                return redirect()->route('projects.index')->with('error', 'Projet introuvable');
+            }
+
+            $request->validate([
+                'name' => 'required|unique:projects,name,' . $id,
+                'description' => 'nullable|string|max:1000',
+            ]);
+        
+            $input = $request->all();
+            $project->update($input);   
+
+            return redirect()->route('projects.index')->with('success', 'Projet mis à jour avec succès');
+        }
+
+
+        public function destroy($id){
+
+            Project::find($id)->delete();
+            return redirect()->route('projects.index')->with('success', 'Projet supprimé avec succès');
+    
+        }
 
     
 }

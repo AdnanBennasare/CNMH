@@ -10,7 +10,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 abstract class BaseRepository
 {
     protected $model;
-    protected $paginationLimit = 2;
+    protected $paginationLimit = 8;
 
 
 

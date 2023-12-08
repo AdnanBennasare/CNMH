@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>lab crud basic</title>
+    <title>lab crud standar</title>
     
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href={{asset("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css")}} integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -26,4 +26,10 @@
     <!-- summernote -->
     <link rel="stylesheet" href={{asset("plugins/summernote/summernote-bs4.min.css")}}>
     <link rel="stylesheet" href={{asset("dist/css/main.css")}}>
+
+      <!-- Select2 -->
+  <link rel="stylesheet" href={{asset("plugins/select2/css/select2.min.css")}}>
+  <link rel="stylesheet" href={{asset("plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")}}>
+  {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+
   </head>

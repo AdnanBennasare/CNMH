@@ -20,15 +20,21 @@
           <li class="nav-item menu-open">
 
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('projects.index')}}" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 projects
-                <span class="badge badge-info right">2</span>
               </p>
             </a>
           </li>
-      
+          <li class="nav-item">
+            <a href="{{route('tasks.index')}}" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                tasks
+              </p>
+            </a>
+          </li>
 
           </li>
         </ul>

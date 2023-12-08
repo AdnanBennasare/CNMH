@@ -8,3 +8,11 @@ php artisan migrate
 php artisan make:model Project
 php artisan make:controller ProjectController
  php artisan make:request createProjectRequest
+
+php artisan make:model Task
+php artisan make:controller TaskController
+php artisan make:request createTaskRequest
+
+
+
+

@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>edit project</h1>
+            <h1>modify task</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -16,44 +16,47 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <div class="d-flex justify-content-center">
+        <div class="">
             <!-- general form elements -->
-            <div class="col-md-12 card card-info">
+            <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">edit project {{ $project->name }}</h3>
+              <h3 class="card-title">edit</h3>
               </div>
-              <!-- /.card-header -->
+              <!-- .card-header -->
               <!-- form start -->
-              <form method="post" action="{{route('projects.update', $project->id)}}">
-                @csrf
+              <form method="post" action="{{route('tasks.update', $task->id)}}">
+                @csrf 
                 @method("PUT")
                 <div class="card-body">
+                <input type="hidden" name="project_id" value="{{$task->project_id}}">
                   <div class="form-group">
-                    <label for="name">le nom Project</label>
-                    <input type="text" class="form-control" value="{{ $project->name }}" name="name" id="name" placeholder="le nom Projet">
+                    <label for="title">Titre de tache</label>
+                    <input type="text" class="form-control" value="{{$task->title}}" name="title" id="title" placeholder="entre le titre de tache">
                     <div style="color:red">
-                        @error("name")
+                        @error("title")
                         {{$message}}
                         @enderror
                         </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="description">le nom description</label>
-                    <input type="text" class="form-control" value="{{ $project->description }}" id="description" name="description" placeholder="description">
+                    <label for="description">Description de tache</label>
+                    <input type="text" class="form-control" value="{{$task->description}}" id="description" name="description" placeholder="Entre Tache Description">
                     <div style="color:red">
                         @error("description")
                         {{$message}}
                         @enderror
-                        </div>               
+                        </div>                   
                   </div>
+               
+               
+        
                 </div>
                 <!-- /.card-body -->
-
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-info">edit projet</button>
+                  <button type="submit" class="btn btn-info">modifie tache</button>
            
-                    <a href="{{route('projects.index')}}" type="submit" class="btn btn-secondary">Annuler</a>
+                    <a href="{{route('projects.index')}}" type="submit" class="btn btn-secondary">annuler</a>
   
                 </div>
               </form>
