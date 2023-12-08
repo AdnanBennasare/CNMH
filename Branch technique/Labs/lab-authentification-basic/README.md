@@ -1,15 +1,16 @@
 # lab-authentification
 
-##
-Travail à faire
+## Travail à faire
 
 - Ajouter l'authentification pour lab crud basic
 - Intégrer l'authentification via Laravel Auth.
 
-- refrence laravel.com:
-![laravel.com](https://laravel.com/docs/10.x/authentication)
+### refrence laravel.com:
 
-Command used in the application
+[laravel.com](https://laravel.com/docs/10.x/authentication)
+
+
+## Command used in the application
 - après avoir cloné le dépôt
 1. Update Composer Dependencies:
 ```
