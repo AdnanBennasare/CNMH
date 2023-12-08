@@ -24,7 +24,6 @@ cp .env.example .env
 
 4. Proceed to create the tables by running these commands:
 ```
-
 php artisan make:migration Projects
 
 php artisan make:migration Tasks
