@@ -7,7 +7,7 @@ Travail à faire
 - Intégrer l'authentification via Laravel Auth.
 
 - refrence laravel.com:
-![auth](https://laravel.com/docs/10.x/authentication)
+![laravel.com](https://laravel.com/docs/10.x/authentication)
 
 Command used in the application
 - après avoir cloné le dépôt
