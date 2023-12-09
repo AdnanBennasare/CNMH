@@ -1,7 +1,6 @@
-@extends('mainPage')
-@section('section')
+@extends('layouts.app')
+@section('content')
 
-<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -64,7 +63,6 @@
         </div>
     </div>
     </section>
-</div>
 
             <!-- /.card -->
 

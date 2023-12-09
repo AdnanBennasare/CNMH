@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ProjectController;
@@ -19,6 +20,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('projects', ProjectController::class);
-Route::resource('tasks', TaskController::class);
+// Routes requiring authentication
+Route::middleware(['auth'])->group(function () {
+    Route::resource('projects', ProjectController::class);
+    Route::resource('tasks', TaskController::class);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
 
+// Authentication routes (login, register, etc.)
+Auth::routes();

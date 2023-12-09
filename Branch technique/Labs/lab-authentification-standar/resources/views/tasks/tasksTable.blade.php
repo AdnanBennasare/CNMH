@@ -32,6 +32,7 @@
   
         <button type="button" class="btn btn-danger delete-task" style="font-size: 11px;" data-bs-toggle="modal" data-bs-target="#exampleModal" data-task-id="{{ $task->id }}" data-task-title="{{ $task->title }}" >
             <i class="fa-solid fa-trash"></i>
+    
         </button>
        
               

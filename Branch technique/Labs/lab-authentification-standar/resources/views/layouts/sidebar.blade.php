@@ -1,45 +1,17 @@
- <!-- Main Sidebar Container -->
- <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="" class="brand-link">
-      <span class="brand-text font-weight-light ml-5">lab crud standar</span>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="{{ route('home') }}" class="brand-link">
+        <img src="https://assets.infyom.com/logo/blue_logo_150x150.png"
+             alt="AdminLTE Logo"
+             class="brand-image img-circle elevation-3">
+        <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
     </a>
 
-    <!-- Sidebar -->
     <div class="sidebar">
-
-
-      <!-- SidebarSearch Form -->
-
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-
-          <li class="nav-item">
-            <a href="{{route('projects.index')}}" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                projects
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('tasks.index')}}" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                tasks
-              </p>
-            </a>
-          </li>
-
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                @include('layouts.menu')
+            </ul>
+        </nav>
     </div>
-    <!-- /.sidebar -->
-  </aside>
+
+</aside>
