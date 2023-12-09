@@ -46,5 +46,9 @@ npm install && npm run build
  ```
  php artisan artisan serve
 ```
+
+## Refrence
+
+- [infyom.com](https://infyom.com/open-source/laravel-ui-adminlte/docs)
     
 
