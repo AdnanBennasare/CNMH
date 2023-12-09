@@ -48,7 +48,6 @@ npm install && npm run build
 ```
 
 ## Refrence
-
 - [infyom.com](https://infyom.com/open-source/laravel-ui-adminlte/docs)
     
 
