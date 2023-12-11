@@ -4,12 +4,12 @@ Comment Rediger une presentation professionnel
 
 ## critere de validation 
 
-livrable doit etre une presentation ,et fichier Readme 
+livrable doit etre une presentation, et fichier Readme 
 
 ### Reference
 
-[Prepare a Professional Presentation](https://www.wikihow.com/Prepare-a-Professional-Presentation) 
+[Prepare a Professional Presentation](https://www.ispringsolutions.com/blog/10-powerpoint-tips-to-make-your-slides-more-effective) 
 
 ### Solution
 
-[Presentation](https://docs.google.com/presentation/d/1ipA7ivfeq-UdEdP9IpkkuUlq12vlxb4-2O5CuivC-50/edit#slide=id.p)
+[Presentation](https://docs.google.com/presentation/d/166K4uPnyJH4fV_Y44AKr01mh9WkIqkwBbwmEeBuVXLs/edit?usp=sharing)
