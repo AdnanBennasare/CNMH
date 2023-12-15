@@ -9,29 +9,29 @@ use Illuminate\Http\Request;
 
 class TasksController extends Controller
 {
-    // public function index(){
-    //     $tasks =  Task::paginate(2);
-    //     return view('tasks.index', compact('tasks'));
-    // }
+    public function index(){
+        $tasks =  Task::paginate(2);
+        return view('tasks.index', compact('tasks'));
+    }
 
-    public function index(Request $request)
-    {
+    // public function index(Request $request)
+    // {
 
-        // dd($request);
+    //     // dd($request);
        
-            $query = $request->input('query');
-            $tasks = Task::where(function($queryBuilder) use ($query) {
-                $queryBuilder->where('title', 'like', '%' . $query . '%');
-            })->paginate(2);
+    //         $query = $request->input('query');
+    //         $tasks = Task::where(function($queryBuilder) use ($query) {
+    //             $queryBuilder->where('title', 'like', '%' . $query . '%');
+    //         })->paginate(2);
     
             
-            if ($request->ajax()) {
-                return view('tasks.tasksTable', compact('tasks'));
-            } else {       
-                return view('tasks.index', compact('tasks'));
-            }
+    //         if ($request->ajax()) {
+    //             return view('tasks.tasksTable', compact('tasks'));
+    //         } else {       
+    //             return view('tasks.index', compact('tasks'));
+    //         }
         
-    }
+    // }
     
     
     

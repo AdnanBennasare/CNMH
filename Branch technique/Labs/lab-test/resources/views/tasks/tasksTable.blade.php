@@ -8,32 +8,37 @@
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody id="tbody">                     
-                                        @foreach ($tasks as $task)    
-                                    <tr>
+                                @if ($tasks->count() > 0)
+    <tbody id="tbody">
+        @foreach ($tasks as $task)
+            <tr>
+                <td>{{$task->title}}</td>
+                <td>{{$task->description}}</td>
+                <td>{{$task->project_id}}</td>
 
-                                        <td>{{$task->title}}</td>
-                                        <td>{{$task->description}}</td>
-                                        <th>{{$task->project_id}}</th>                    
+                <td class="text-center">
+                    <a href="{{route('tasks.edit', $task->id)}}" class="btn btn-sm btn-default">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
 
-                                        <td class="text-center" >
-                                             
-                                            <a href="{{route('tasks.edit', $task->id)}}" class="btn btn-sm btn-default"><i
-                                                    class="fa-solid fa-pen-to-square"></i></a>
-                                                    
-                                        
-                                                <form action="{{route('tasks.destroy', $task->id)}}" method="post">
-                                                    @csrf
-                                                    @method("DELETE")
-                                                    <button class="btn btn-danger btn-sm">
-                                                        <i class="fas fa-trash">
-                                                        </i>                              
-                                                    </button>
-                                                </form>
-                                        </td>
-                                    </tr>               
-                                        @endforeach
-                                </tbody>
+                    <form action="{{route('tasks.destroy', $task->id)}}" method="post">
+                        @csrf
+                        @method("DELETE")
+                        <button class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+@else
+    <tr>
+        <td colspan="4" class="text-center">Pas de tâches</td>
+    </tr>
+@endif
+
+                               
                             </table>
                         </div>
                         <div class="float-right">
