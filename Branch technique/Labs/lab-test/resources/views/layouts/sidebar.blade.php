@@ -2,7 +2,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <span class="brand-text font-weight-light text-center">lab laravel basic</span>
+                <span class="brand-text font-weight-light text-center">lab laravel test</span>
             </a>
 
             <!-- Sidebar -->

@@ -14,6 +14,9 @@ class TasksController extends Controller
         return view('tasks.index', compact('tasks'));
     }
 
+
+
+
     // public function index(Request $request)
     // {
 
