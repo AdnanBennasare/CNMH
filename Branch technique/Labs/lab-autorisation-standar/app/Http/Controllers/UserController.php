@@ -48,6 +48,8 @@ public function login(Request $request){
         'name' => ['required', 'min:3', 'max:15', Rule::unique('users', 'name')],
         'email' => ['required', 'email', Rule::unique('users', 'email')],
         'password' =>  ['required', 'min:8', 'max:200', 'confirmed'],
+
+
     ]);
 
 
@@ -55,7 +57,7 @@ public function login(Request $request){
 
 
     $user = User::create($incomingFields);
-    auth()->login($user);
+    auth()->login($user); 
 
     return redirect('/tasks');
    }

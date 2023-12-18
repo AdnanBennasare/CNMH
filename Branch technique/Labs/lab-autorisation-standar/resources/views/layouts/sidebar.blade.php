@@ -2,7 +2,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <span class="brand-text font-weight-light text-center">lab laravel basic</span>
+                <span class="brand-text font-weight-light text-center">lab laravel authorisation standar</span>
                 <div class="ml-2"><a href="{{route('logout')}}">Log out</a>
     
                     <h5 class="text-white">user : {{ Auth::user()->name }}</h5></div>
