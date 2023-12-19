@@ -52,13 +52,13 @@ public function login(Request $request){
 
     ]);
 
-
     $incomingFields['password'] = bcrypt($incomingFields['password']);
-
-
     $user = User::create($incomingFields);
-    auth()->login($user); 
-
+    $user->assignRole('member');
+    $user->givePermissionTo('index-TasksController');
+    auth()->login($user);
     return redirect('/tasks');
    }
+
+   
 }
