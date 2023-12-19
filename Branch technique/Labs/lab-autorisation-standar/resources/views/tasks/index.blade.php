@@ -9,7 +9,7 @@
                     <h1>List des taches</h1>
                 </div>
                 <div class="col-sm-6">
-                    @can('create-Tasks') 
+                    @can('create-TasksController') 
                     <div class="float-sm-right">
                         <a href="{{route('tasks.create')}}" class="btn btn-sm btn-primary">Ajouter tâche</a>
                     </div>

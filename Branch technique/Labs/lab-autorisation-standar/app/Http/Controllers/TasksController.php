@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Http\Controllers\AppBaseController;
 
 
-class TasksController extends Controller
+class TasksController extends AppBaseController
 {
     // public function index(){
     //     $tasks =  Task::paginate(2);

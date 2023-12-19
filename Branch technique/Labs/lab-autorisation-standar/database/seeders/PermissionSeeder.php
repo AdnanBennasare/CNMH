@@ -2,11 +2,16 @@
 
 namespace Database\Seeders;
 
+// Rest of the code...
+use Database\Seeders\PermissionHelper;
+
+// Rest of the code...
+
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 // use PermissionHelper;
-use Database\Seeders\PermissionHelper;
+
 
 
 class PermissionSeeder extends Seeder
@@ -16,19 +21,23 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        // Permission::create(['name' => 'index-TasksController', 'guard_name' => 'web']);
-        // Permission::create(['name' => 'show-TasksController', 'guard_name' => 'web']);
-        // Permission::create(['name' => 'create-TasksController', 'guard_name' => 'web']);
-        // Permission::create(['name' => 'store-TasksController', 'guard_name' => 'web']);
-        // Permission::create(['name' => 'edit-TasksController', 'guard_name' => 'web']);
-        // Permission::create(['name' => 'update-TasksController', 'guard_name' => 'web']);
-        // Permission::create(['name' => 'destroy-TasksController', 'guard_name' => 'web']);
+        $controllers = ['Tasks'];
 
-        foreach(PermissionHelper::generatePermissions() as $permission) {
-            if(Permission::where('name', $permission)->doesntExist()) {
-                Permission::create(['name' => $permission]);
-            }
+        foreach ($controllers as $controller) {
+            $this->createPermissionsForController($controller);
         }
+    }
 
+    private function createPermissionsForController($controller)
+    {
+        $actions = ['create', 'store', 'show', 'edit', 'update', 'destroy', 'index'];
+    
+        foreach ($actions as $action) {
+            $permissionName = $action . '-' . $controller . 'Controller';
+            Permission::create(['name' => $permissionName, 'guard_name' => 'web']);
+        }
+    
+        // Add back the specific permission creation
+        // Permission::create(['name' => 'getTasksByProject-TasksController', 'guard_name' => 'web']);
     }
 }

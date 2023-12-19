@@ -22,24 +22,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-            Gate::define('create-Tasks', function ($user) {
-                return $user->role == 'project_leader';
-            });
-            Gate::define('store-Tasks', function ($user) {
-                return $user->role == 'project_leader';
-            });
-            Gate::define('edit-Tasks', function ($user) {
-                return $user->role == 'project_leader';
-            });
-            Gate::define('update-Tasks', function ($user) {
-                return $user->role == 'project_leader';
-            });
-            Gate::define('destroy-Tasks', function ($user) {
-                return $user->role == 'project_leader';
-            });
-            Gate::define('index-Tasks', function ($user) {
-                return $user ;
-            });
             
         
     }

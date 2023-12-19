@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\Project;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+// use Database\Factories\ProjectFactory;
+
 
 class ProjectSeeder extends Seeder
 {
@@ -16,17 +18,17 @@ class ProjectSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        Project::factory()->create([
+        Project::create([
             'name' => 'Portfolio',
             'description' => 'Développement d\'un site web mettant en valeur nos compétences.',
         ]);
 
-        Project::factory()->create([
+        Project::create([
             'name' => 'Arbre des compétences',
             'description' => 'Création d\'une application web pour l\'évaluation des compétences.',
         ]);
 
-        Project::factory()->create([
+        Project::create([
             'name' => 'CNMH',
             'description' => 'Création d\'une application web pour la gestion des patients de centre CNMH.',
         ]);
