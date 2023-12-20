@@ -1,6 +1,7 @@
 @extends('welcome')
 @section('section')
 <div class="content-wrapper">
+
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -50,3 +51,6 @@
 </div>
 
 @endsection
+
+
+
