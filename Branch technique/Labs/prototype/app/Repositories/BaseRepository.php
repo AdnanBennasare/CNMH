@@ -10,8 +10,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 abstract class BaseRepository
 {
     protected $model;
-    protected $paginationLimit = 8;
-
+    protected $paginationLimit = 2;
 
 
     public function __construct()
@@ -39,7 +38,6 @@ abstract class BaseRepository
 
         return $this->model = $model;
     }
-
 
 
     public function create(array $input): Model

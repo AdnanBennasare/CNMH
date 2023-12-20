@@ -1,6 +1,5 @@
 
 @extends('layouts.app')
-
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
@@ -10,7 +9,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="float-sm-right">
-                        <a href="./ajouter.html" class="btn btnAdd">Add New</a>
+                        <a href="{{route('projects.create')}}" class="btn btnAdd">Add New</a>
                     </div>
                 </div>
             </div>
