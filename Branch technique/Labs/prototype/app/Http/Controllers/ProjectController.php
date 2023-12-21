@@ -115,38 +115,38 @@ return redirect()->route('projects.index')->with('success', 'Projet supprimé av
 
 
 
-    //  public function export() 
-    //  {
-    //     $this->authorize('export', Project::class);
-    //     return Excel::download(new ProjectExport, 'Projects.xlsx');
-    //  }
+     public function export() 
+     {
+        $this->authorize('export', Project::class);
+        return Excel::download(new ProjectExport, 'Projects.xlsx');
+     }
 
 
-//      public function import(Request $request)
-// {
-//     $this->authorize('import', Project::class);
+     public function import(Request $request)
+{
+    // $this->authorize('import', Project::class);
 
-//     $request->validate([
-//         'projects' => 'required|mimes:xlsx,xls',
-//     ]);
+    $request->validate([
+        'projects' => 'required|mimes:xlsx,xls',
+    ]);
 
-//     $import = new ProjectImport;
+    $import = new ProjectImport;
 
-//     try {
-//         $importedRows = Excel::import($import, $request->file('projects'));
+    try {
+        $importedRows = Excel::import($import, $request->file('projects'));
     
-//         if($importedRows) {
-//             $successMessage = 'Fichier importé avec succès.';
-//         } else {
-//             $successMessage = 'Pas de nouvelles données à importer.';
-//         }
+        if($importedRows) {
+            $successMessage = 'Fichier importé avec succès.';
+        } else {
+            $successMessage = 'Pas de nouvelles données à importer.';
+        }
 
-//         return redirect('/projects')->with('success', $successMessage);
-//     } catch (\Exception $e) {
-//         // Handle the exception, e.g., log the error or display an error message.
-//         return redirect('/projects')->with('error', 'une erreur a été commise, veuillez vérifier les données dublicate');
-//     }
-// }
+        return redirect('/projects')->with('success', $successMessage);
+    } catch (\Exception $e) {
+        // Handle the exception, e.g., log the error or display an error message.
+        return redirect('/projects')->with('error', 'une erreur a été commise, veuillez vérifier les données dublicate');
+    }
+}
 
      
 

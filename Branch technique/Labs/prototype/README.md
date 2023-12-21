@@ -8,3 +8,5 @@ php artisan make:controller ProjectController
 php artisan make:migration create_project_table
 php artisan make:migration create_tasks_table 
 php artisan make:model Project 
+php artisan make:controller TasksController
+php artisan make:model Tasks 

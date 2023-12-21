@@ -22,3 +22,34 @@ table tr td {
     background-color: #BCD2E8 !important;
     border: 1px solid #F2F2F2;
 }
+
+
+/* select2 */
+
+.search-container {
+
+    position: relative;
+    width: 300px; /* Adjust the width as needed */
+  }
+
+  .search-input {
+      
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .search-icon i {
+    color: #aaaaaaf9;
+  }
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    cursor: pointer;
+  }
+  /* #searchInput {
+  } */
+  .search-container input {
+      border-color: #9f9f9f;    
+  }

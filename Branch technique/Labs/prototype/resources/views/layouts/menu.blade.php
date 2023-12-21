@@ -10,4 +10,8 @@
         <p>projects</p>
     </a>
 
+    <a href="{{ route('tasks.index') }}" class="nav-link {{ Request::is('tasks') ? 'active' : '' }}">
+        <i class="fas fa-project-diagram"></i>
+        <p>tasks</p>
+    </a>
 </li>

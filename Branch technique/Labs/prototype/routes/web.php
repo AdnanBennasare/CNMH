@@ -3,6 +3,7 @@
 // use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TasksController;
 use App\Http\Controllers\ProjectController;
 
 /*
@@ -22,4 +23,10 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('projects', ProjectController::class);
+Route::resource('tasks', TasksController::class);
+
+
+
+Route::get('projects/export', [ProjectController::class, 'export'])->name('export.project');
+Route::post('projects/import', [ProjectController::class, 'import'])->name('import.project');
 Auth::routes();
