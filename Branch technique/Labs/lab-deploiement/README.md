@@ -2,16 +2,18 @@
 
 ## travail a faire
 
-1. install apache
-1. deploiement deux site php avec echo "hellow world"
-2. deploiement crud basic and standar
+1. Installation de Apache comme service Windows
+2. Installation de php
+3. Configuration de PHP comme module Apache
+4. Install https
+     - OpenSSL
+
+
 
 ## Critétre devalidation 
 
-
-
-1. déploiment de lab-laravel-crud-basic sans VirtuelHoast
-    - 
+1. dépoloiment de lab-laravel-crud-basic sans virtuel host
 2. déploiment de lab-laravel-crud-standar dans le meme serveur
-3. installation de `HTTPS`  sur lab-laravel-crud-basic 
+3. Installation d HTTPS sur lab-laravel-crud-basic
+
 
