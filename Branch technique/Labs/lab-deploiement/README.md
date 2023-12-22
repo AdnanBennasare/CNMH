@@ -16,4 +16,8 @@
 2. déploiment de lab-laravel-crud-standar dans le meme serveur
 3. Installation d HTTPS sur lab-laravel-crud-basic
 
+## comandes
 
+```
+httpd -k install
+```
