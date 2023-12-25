@@ -27,11 +27,11 @@ class TasksController extends Controller
     public function index(Request $request)
     {
 
-        $projectID = $request->input('project');
-
-        // Dump and die to check the project ID
-        // dd($projectID);
+        $ProjectName = $request->input('query');
         $query = $request->input('query');
+      
+
+        
         $tasks = Task::with('project')
             ->where(function($queryBuilder) use ($query) {
                 $queryBuilder->where('title', 'like', '%' . $query . '%')
@@ -45,7 +45,7 @@ class TasksController extends Controller
             return view('tasks.taskTablePartial', compact('tasks'));
         } else {
             $projects = Project::all();
-            return view('tasks.index', compact('tasks', 'projects', 'projectID'));       
+            return view('tasks.index', compact('tasks', 'projects', 'ProjectName'));       
         }
     }
 
@@ -133,35 +133,35 @@ class TasksController extends Controller
 
 
 
-    public function import(Request $request)
-    {
+    // public function import(Request $request)
+    // {
     
-        $request->validate([
-            'tasks' => 'required|mimes:xlsx,xls',
-        ]);
+    //     $request->validate([
+    //         'tasks' => 'required|mimes:xlsx,xls',
+    //     ]);
     
-        $import = new TaskImport;
+    //     $import = new TaskImport;
     
-        try {
-            $importedRows = Excel::import($import, $request->file('tasks'));
+    //     try {
+    //         $importedRows = Excel::import($import, $request->file('tasks'));
         
-            if($importedRows) {
-                $successMessage = 'Fichier importé avec succès.';
-            } else {
-                $successMessage = 'Pas de nouvelles données à importer.';
-            }
+    //         if($importedRows) {
+    //             $successMessage = 'Fichier importé avec succès.';
+    //         } else {
+    //             $successMessage = 'Pas de nouvelles données à importer.';
+    //         }
     
-            return redirect('/tasks')->with('success', $successMessage);
-        } catch (\Exception $e) {
-            // Handle the exception, e.g., log the error or display an error message.
-            return redirect('/tasks')->with('error', 'une erreur a été acourd vérifier la syntaxe');
-        }
-    }
+    //         return redirect('/tasks')->with('success', $successMessage);
+    //     } catch (\Exception $e) {
+    //         // Handle the exception, e.g., log the error or display an error message.
+    //         return redirect('/tasks')->with('error', 'une erreur a été acourd vérifier la syntaxe');
+    //     }
+    // }
     
-    public function export() 
-    {
-       return Excel::download(new TaskExport, 'Tasks.xlsx');
-    }
+    // public function export() 
+    // {
+    //    return Excel::download(new TaskExport, 'Tasks.xlsx');
+    // }
 
 
   

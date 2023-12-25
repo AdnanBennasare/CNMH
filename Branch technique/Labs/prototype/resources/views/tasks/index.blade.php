@@ -15,9 +15,7 @@
         </div>
     </div>
 </div>
-{{-- @foreach($project_Tasks as $project_Task)
-                                <option value="{{ $project_Task->id }}">{{ $project_Task->Name }}</option>
-  @endforeach --}}
+
 <section class="content">
     <div class="container-fluid">
 
@@ -46,12 +44,12 @@
 
                             <div class="">
                                 <!-- Set width for select element -->
-                                <select id="filter_by_projects" class="js-example-basic-single" style="width:250px;" name="project">
+                                <select id="filter_by_projects" class="js-example-basic-single" name="project">
                                     <option value="">{{ __('Pages-text.All Projects') }}</option>
                                     @foreach($projects as $project)
                                         {{-- Check if the current project is the selected projectID --}}
-                                        @php $selected = ($project->id == $projectID) ? 'selected' : ''; @endphp
-                                        <option value="{{ $project->id }}" {{ $selected }}>{{ $project->Name }}</option>
+                                        @php $selected = ($project->Name == $ProjectName) ? 'selected' : ''; @endphp
+                                        <option value="{{ $project->Name }}" {{$selected}}>{{ $project->Name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -60,7 +58,7 @@
 
                             <div class="p-0">
                                 <div class="input-group input-group-sm ">
-                                    <input type="text" name="table_search" class="form-control"
+                                    <input type="text" id="searchInput" name="table_search" class="form-control"
                                         placeholder="Search">
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">
@@ -188,7 +186,7 @@ const updatePaginationLinks = () => {
         $('#filter_by_projects').on('input', function() {
             searchQuery = $('#filter_by_projects').val();
             // searchQuery = $(this).val();
-    console.log(searchQuery)
+           console.log(searchQuery)
 
             search(searchQuery);
         });

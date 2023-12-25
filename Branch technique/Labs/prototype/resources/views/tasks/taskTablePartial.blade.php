@@ -25,11 +25,8 @@
     <td>{{ $task->project->Name }}</td>   
 
     <td class="project-actions text-center">
-        <a class="btn btn-primary btn-sm" href="{{route('tasks.show', $task->id)}}">
-            <i class="fas fa-folder"></i>
-        </a>
-       
-
+    
+    
         {{-- edit --}}
         <a class="btn btn-info btn-sm" href="{{route('tasks.edit', $task->id)}}">
             <i class="fas fa-pencil-alt"></i>    
@@ -122,8 +119,8 @@
             @endif              
             </div>
         </div>                                          
-        @if (Auth::user()->role == "project_leader")
-        <div class="float-left d-flex">
+       
+        {{-- <div class="float-left d-flex">
             <a href="{{route('export.task')}}"style="height: 38px;" class="btn text-black border border-dark">
                 {{ __('Pages-text.Export') }} <i class="fa-solid fa-upload pl-2"></i>
             </a>
@@ -149,7 +146,7 @@
                     $('#importForm').submit();
                 });
             });
-            </script>   
-            @endif
+            </script>    --}}
+       
     </div>
 </div>

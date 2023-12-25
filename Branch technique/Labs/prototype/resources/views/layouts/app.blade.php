@@ -2,8 +2,10 @@
        {{-- <link rel="stylesheet" href="{{ asset('../../css/app.css') }}"> --}}
        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
-       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-Tv8Nd5U+CddUU6l7g0z5TAchHAZpdZFi9nLts2jI2ttsvSvDzY6K6daF7f+87Juo" crossorigin="anonymous">
-       <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+       {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-Tv8Nd5U+CddUU6l7g0z5TAchHAZpdZFi9nLts2jI2ttsvSvDzY6K6daF7f+87Juo" crossorigin="anonymous"> --}}
+       {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+       <link rel="stylesheet" href="{{ asset('select2\select2.min.css') }}">
+       
        {{-- <link rel="stylesheet" href="{{ asset('') }}"> --}}
 
     <body class="hold-transition sidebar-mini layout-fixed">
@@ -37,7 +39,7 @@
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="{{route('profile.profileEdit')}}" class="btn btn-default btn-flat">Profile</a>
                                 <a href="#" class="btn btn-default btn-flat float-right"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     Sign out

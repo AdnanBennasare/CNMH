@@ -33,9 +33,13 @@
                     class="fa-solid fa-pen-to-square"></i></a>
 
 
-            <a href="{{route('tasks.index', ['project' => $project->id])}}"
+            <a href="{{route('tasks.index', ['query' => $project->Name])}}"
                 class="btn btn-sm btn-default mx-2">View Tasks</a>
+          
+
                 
+
+
 
                  
 
@@ -128,7 +132,7 @@
             </div>
         </div>
         
-        <div class="float-left d-flex">
+        {{-- <div class="float-left d-flex">
             <a href="{{route('export.project')}}"style="height: 38px;" class="btn text-black border border-dark">
                 {{ __('Pages-text.Export') }} <i class="fa-solid fa-upload pl-2"></i>
             </a>
@@ -155,7 +159,7 @@
                 $('#importForm').submit();
             });
         });
-        </script>
+        </script> --}}
    
  
         

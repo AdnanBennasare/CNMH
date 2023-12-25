@@ -14,4 +14,9 @@
         <i class="fas fa-project-diagram"></i>
         <p>tasks</p>
     </a>
+
+    <a href="{{ route('members.index') }}" class="nav-link {{ Request::is('members') ? 'active' : '' }}">
+        <i class="fas fa-project-diagram"></i>
+        <p>members</p>
+    </a>
 </li>
