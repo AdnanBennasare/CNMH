@@ -29,4 +29,9 @@ Route::resource('tasks', TasksController::class);
 
 Route::get('projects/export', [ProjectController::class, 'export'])->name('export.project');
 Route::post('projects/import', [ProjectController::class, 'import'])->name('import.project');
+
+Route::get('tasks/export', [ProjectController::class, 'export'])->name('export.tasks');
+Route::post('tasks/import', [ProjectController::class, 'import'])->name('import.tasks');
+
+
 Auth::routes();

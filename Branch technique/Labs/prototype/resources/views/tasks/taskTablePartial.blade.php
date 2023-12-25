@@ -3,55 +3,49 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>{{ __('Pages-text.Task Title') }}</th>
+                    <th>{{ __('Pages-text.Task Description') }}</th>
                     <th>{{ __('Pages-text.Project Name') }}</th>
-                    <th>{{ __('Pages-text.Project Description') }}</th>
-                    <th>{{ __('Pages-text.Start date') }}</th>
-                    <th>{{ __('Pages-text.End date') }}</th>
-                   <th class="text-center" >Actions</th>
-
+                    <th class="project-actions text-center">Actions</th>        
                 </tr>
             </thead>
             <tbody id="tbodyresults">
-                @foreach($projects->items() as $project)
+                @foreach($tasks as $task)
 <tr>
-    <td>{{ $project->Name }}</td>
+    <td>{{ $task->Title }}</td>
     <td>
         @php
-            $words = explode(' ', $project->Description);
+            $words = explode(' ', $task->Description);
             $shortenedDescription = implode(' ', array_slice($words, 0, 4));
             $remainingWords = count($words) - 4;
         @endphp
     
         {{ $shortenedDescription }} @if ($remainingWords > 0) ... @endif
     </td>
-    <td>{{ $project->Start_Date }}</td>
-    <td>{{ $project->End_Date }}</td>
+    <td>{{ $task->project->Name }}</td>   
 
-    {{-- <td class="text-center"> --}}
-        <td class="text-center">
-            <a href="{{route('projects.edit', $project->id)}}" class="btn btn-sm btn-default"><i
-                    class="fa-solid fa-pen-to-square"></i></a>
+    <td class="project-actions text-center">
+        <a class="btn btn-primary btn-sm" href="{{route('tasks.show', $task->id)}}">
+            <i class="fas fa-folder"></i>
+        </a>
+       
 
-
-            <a href="{{route('tasks.index', ['project' => $project->id])}}"
-                class="btn btn-sm btn-default mx-2">View Tasks</a>
-                
-
-                 
-
-                    <button type="button" class="btn btn-danger delete-project" data-toggle="modal" data-target="#modal-default" data-project-id="{{ $project->id }}" data-project-name="{{ $project->Name }}" >
-                <i class="fa-solid fa-trash-can"></i>
-                    </button>
-
-        </td>
-
- 
+        {{-- edit --}}
+        <a class="btn btn-info btn-sm" href="{{route('tasks.edit', $task->id)}}">
+            <i class="fas fa-pencil-alt"></i>    
+        </a>
+  
+  
+              
+        <button type="button" class="btn btn-danger delete-task" data-toggle="modal" data-target="#modal-default" data-task-id="{{ $task->id }}" data-task-title="{{ $task->Title }}" >
+            <i class="fa-solid fa-trash-can"></i>
+                </button>
+    </td>
 </tr>
 @endforeach
             </tbody>
         </table>
     </div>
-
 
 
 
@@ -66,7 +60,7 @@
                 @method("DELETE")
 
                 <div class="modal-header">
-                    <h5 class="modal-title fs-5" id="exampleModalLabel">{{ __('Pages-text.Are you sure you want to delete this Project?') }}</h5>
+                    <h5 class="modal-title fs-5" id="exampleModalLabel">{{ __('Pages-text.Are you sure you want to delete this task') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -90,32 +84,33 @@
 
 
     <div class="card-footer clearfix">
+     
             <div class="float-right">
             <div id="paginationContainer">                 
-                @if ($projects->count() > 0)
+                @if ($tasks->count() > 0)
                 <ul class="pagination m-0">
-                    @if ($projects->onFirstPage())
+                    @if ($tasks->onFirstPage())
                         <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
                             <span class="page-link" aria-hidden="true">«</span>
                         </li>
                     @else
                         <li class="page-item">
-                            <button class="page-link" page-number="{{ $projects->currentPage() - 1 }}" rel="prev"
+                            <button class="page-link" page-number="{{ $tasks->currentPage() - 1 }}" rel="prev"
                                 aria-label="@lang('pagination.previous')">«</button>
                         </li>
                     @endif
         
-                    @for ($i = 1; $i <= $projects->lastPage(); $i++)
-                        @if ($i == $projects->currentPage())
+                    @for ($i = 1; $i <= $tasks->lastPage(); $i++)
+                        @if ($i == $tasks->currentPage())
                             <li class="page-item active" aria-current="page"><span class="page-link">{{ $i }}</span></li>
                         @else
                             <li class="page-item"><button class="page-link" page-number="{{ $i }}">{{ $i }}</button></li>
                         @endif
                     @endfor
         
-                    @if ($projects->hasMorePages())
+                    @if ($tasks->hasMorePages())
                         <li class="page-item">
-                            <button class="page-link" page-number="{{ $projects->currentPage() + 1 }}" rel="next"
+                            <button class="page-link" page-number="{{ $tasks->currentPage() + 1 }}" rel="next"
                                 aria-label="@lang('pagination.next')">»</button>
                         </li>
                     @else
@@ -126,42 +121,35 @@
                 </ul>
             @endif              
             </div>
-        </div>
-        
+        </div>                                          
+        @if (Auth::user()->role == "project_leader")
         <div class="float-left d-flex">
-            <a href="{{route('export.project')}}"style="height: 38px;" class="btn text-black border border-dark">
+            <a href="{{route('export.task')}}"style="height: 38px;" class="btn text-black border border-dark">
                 {{ __('Pages-text.Export') }} <i class="fa-solid fa-upload pl-2"></i>
             </a>
             
   
             
-            <form action="{{ route('import.project') }}" class="pl-1" method="post" enctype="multipart/form-data" id="importForm">
+            <form action="{{ route('import.task') }}" class="pl-1" method="post" enctype="multipart/form-data" id="importForm">
                 @csrf 
-                <input type="file" name="projects" id="formFileInput" style="position: absolute; left: -9999px;">
-                <button type="button" id="fileButton" class="btn text-black border border-dark">{{ __('Pages-text.Import') }} <i class="fa-solid fa-download pl-2"></i></button>
+                <input type="file" name="tasks" id="formFileInputtasks" style="position: absolute; left: -9999px;">
+                <button type="button" id="importbutton" class="btn text-black border border-dark">{{ __('Pages-text.Import') }} <i class="fa-solid fa-download pl-2"></i></button>
             </form>
 
             
-        </div>
-
+        </div>  
         <script>
-        $(document).ready(function() {
-            $('#fileButton').click(function() {
-                $('#formFileInput').click();
+            $(document).ready(function() {
+                $('#importbutton').click(function() {
+                    $('#formFileInputtasks').click();
+                });
+            
+                $('#formFileInputtasks').change(function() {
+                    // Assuming you want to submit the form when a file is selected
+                    $('#importForm').submit();
+                });
             });
-        
-            $('#formFileInput').change(function() {
-                // Assuming you want to submit the form when a file is selected
-                $('#importForm').submit();
-            });
-        });
-        </script>
-   
- 
-        
+            </script>   
+            @endif
     </div>
-  
 </div>
-
-
-

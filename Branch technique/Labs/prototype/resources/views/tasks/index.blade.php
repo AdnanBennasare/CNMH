@@ -9,13 +9,15 @@
             </div>
             <div class="col-sm-6">
                 <div class="float-sm-right">
-                    <a href="./ajouter.html" class="btn btnAdd">Add New</a>
+                    <a href="{{route('tasks.create')}}" class="btn btnAdd">Add New</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+{{-- @foreach($project_Tasks as $project_Task)
+                                <option value="{{ $project_Task->id }}">{{ $project_Task->Name }}</option>
+  @endforeach --}}
 <section class="content">
     <div class="container-fluid">
 
@@ -40,14 +42,20 @@
                     <div class="card-header col-md-12">
 
                         <div class="d-flex justify-content-between">
-                                <div class=""> <!-- Set width for select element -->
-                        <select id="filter_by_projects" class="js-example-basic-single" style="width:250px;" name="project">
-                            <option value="">{{ __('Pages-text.All Projects') }}</option>
-                            @foreach($projects as $project)
-                                <option value="{{ $project->Name }}">{{ $project->Name }}</option>
-                            @endforeach
-                        </select>                   
+                  
+
+                            <div class="">
+                                <!-- Set width for select element -->
+                                <select id="filter_by_projects" class="js-example-basic-single" style="width:250px;" name="project">
+                                    <option value="">{{ __('Pages-text.All Projects') }}</option>
+                                    @foreach($projects as $project)
+                                        {{-- Check if the current project is the selected projectID --}}
+                                        @php $selected = ($project->id == $projectID) ? 'selected' : ''; @endphp
+                                        <option value="{{ $project->id }}" {{ $selected }}>{{ $project->Name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
+                            
 
 
                             <div class="p-0">
@@ -68,83 +76,9 @@
                        
                     </div>
 
-                    <div class="card-body table-responsive p-0">
-                        <table class="table table-striped text-nowrap">
-                            <thead>
-                                <tr>
-                                    <th>Name task</th>
-                                    <th>Name project</th>
-                                    <th>Start date</th>
-                                    <th>End date</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>tache 1</td>
-                                    <td>
-                                        Project1
-                                    </td>
-                                    <td>11-7-2014</td>
-                                    <td>11-7-2014</td>
-                                    <td>
-                                        <a href="./edit.html" class="btn btn-sm btn-default"><i
-                                                class="fa-solid fa-pen-to-square"></i></a>
-                                        <button type="button" class="btn btn-sm btn-danger"><i
-                                                class="fa-solid fa-trash"></i></button>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>tache 2</td>
-                                    <td>
-                                        Project1
-                                    </td>
-                                    <td>11-7-2014</td>
-                                    <td>11-7-2014</td>
-                                    <td>
-                                        <a href="./edit.html" class="btn btn-sm btn-default"><i
-                                                class="fa-solid fa-pen-to-square"></i></a>
-                                        <button type="button" class="btn btn-sm btn-danger"><i
-                                                class="fa-solid fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>tache 3</td>
-                                    <td>
-                                        Project1
-                                    </td>
-                                    <td>11-7-2014</td>
-                                    <td>11-7-2014</td>
-                                    <td>
-                                        <a href="./edit.html" class="btn btn-sm btn-default"><i
-                                                class="fa-solid fa-pen-to-square"></i></a>
-                                        <button type="button" class="btn btn-sm btn-danger"><i
-                                                class="fa-solid fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center p-2">
-                        <div class="d-flex align-items-center mb-2 ml-2 mt-2">
-                            <button type="button" class="btn  btn-default btn-sm">
-                                <i class="fa-solid fa-file-arrow-down"></i>
-                                IMPORT</button>
-                            <button type="button" class="btn  btn-default btn-sm mt-0 mx-2">
-                                <i class="fa-solid fa-file-export"></i>
-                                EXPORT</button>
-                        </div>
-                        <div class="">
-                            <ul class="pagination  m-0 float-right mr-5">
-                                <li class="page-item"><a class="page-link" href="#">«</a></li>
-                                <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">»</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <div id="resulthtml">
+                        @include('tasks.taskTablePartial')
+                  </div>
                 </div>
 
             </div>
@@ -177,7 +111,7 @@ $(document).ready(function() {
         console.log(deleteUrl);
 
       
-            $('#exampleModal .modal-body').html(`
+            $('#modal-default .modal-body').html(`
             <div>
             {{ __('Pages-text.If you are sure you want to delete this task') }}
             <strong>"${taskName}"</strong>

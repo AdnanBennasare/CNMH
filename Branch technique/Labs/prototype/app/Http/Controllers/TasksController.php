@@ -26,6 +26,11 @@ class TasksController extends Controller
     // ========== index Function ==========
     public function index(Request $request)
     {
+
+        $projectID = $request->input('project');
+
+        // Dump and die to check the project ID
+        // dd($projectID);
         $query = $request->input('query');
         $tasks = Task::with('project')
             ->where(function($queryBuilder) use ($query) {
@@ -34,13 +39,13 @@ class TasksController extends Controller
                                  $projectQuery->where('Name', 'like', '%' . $query . '%');
                              });
             })
-            ->paginate(8); // Adjust the pagination limit as per your requirement
+            ->paginate(2); 
     
         if ($request->ajax()) {
             return view('tasks.taskTablePartial', compact('tasks'));
         } else {
-            $projects = Project::all(); // Fetch all projects
-            return view('tasks.index', compact('tasks', 'projects'));       
+            $projects = Project::all();
+            return view('tasks.index', compact('tasks', 'projects', 'projectID'));       
         }
     }
 
@@ -48,9 +53,10 @@ class TasksController extends Controller
     // ======= create =========
     public function create(Request $request)
     {
-        $projectId = $request->input('project_id');
-        $projectName = Project::find($projectId)->Name; 
-        return view('tasks.create', compact('projectId', 'projectName'));
+
+            $projects = Project::all();
+            return view('tasks.create', ['projects' => $projects]);
+
     }
 
     // ======= store =========
@@ -62,18 +68,20 @@ class TasksController extends Controller
         return redirect()->route('tasks.index')->with('success', 'produit ajouté avec succès');
     }
 
+
+
+
     // ======= edit =========
 
 
-    public function edit($id){
-        $task = Task::find($id);
-        if ($task) {
 
-            return view('tasks.update', compact('task'));
-        }
-       
-        return abort(404);
-    }
+    public function edit($id){
+        $projects = Project::all();
+        $task = Task::find($id);
+        $selectedproject = Project::find($task->project_id);
+        // $projectName = $project->name;
+        return view('tasks.edit', compact('task', 'selectedproject', 'projects'));
+     }
 
     // ======= update =========
 

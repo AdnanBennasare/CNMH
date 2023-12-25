@@ -58,14 +58,14 @@ class ProjectController extends Controller
     // ======= edit Project ==========
 
     public function edit($id){
-        $project = Project::find($id);   
+        $project = Project::find($id);
         if ($project){
             return view('projects.update', compact('project'));
         } else {
             abort(404);
-        }
-        
+        }     
     }
+
 
    // ======= update Project ==========
    public function update(Request $request, $id)
@@ -93,14 +93,15 @@ class ProjectController extends Controller
 
 
 //  =========== show ==========
-   public function show($id){
-    $project = Project::find($id);   
-    if($project){
-        return view('projects.view', compact('project'));
-    }else{
-        abort(404);
-    }
-}
+//    public function show($id){
+//     $project = Project::find($id);   
+//     $tasks = $project->tasks;
+//     if($project){
+//         return view('tasks.index', compact('project', 'tasks'));
+//     }else{
+//         abort(404);
+//     }
+// }
 
 
 // ========== destroy ========
