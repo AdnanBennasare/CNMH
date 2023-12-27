@@ -22,9 +22,7 @@ return [
     
     //sidebar
 "Projects & Tasks" => "Les Projets & tâches",
-"Projects" => "Projets",
-"Tasks" => "tâches",
-"Members" => "Membres",
+"Projects list" => "list des Projets",
 
 // Projects
 "Search" => "Rechercher",
@@ -134,15 +132,21 @@ return [
 "Delete Acount" => "Supprimer le compte",
 
 
- "Delete Acount Text" => "Une fois votre compte supprimé, toutes ses ressources et données seront définitivement supprimées. Avant de supprimer votre compte,
- Veuillez télécharger toutes les données ou informations que vous souhaitez conserver.",
 
 
+"Create a task" => "créer une tâche",
+"Projects" => "les Projets",
+"Members" => "les Membres",
+"Tasks" => "les tâches",
+"See Tasks" => "Voir les tâches",
+"Tasks list" => "list des tâches",
+"Members list" => "list des Membre",
+"Create a Member" => "créer une Membre",
+"Are you sure you want to delete your account?" => "Voulez-vous vraiment supprimer votre compte ?",
 
+"Delete Acount Text" => "Une fois votre compte supprimé, toutes ses ressources et données seront définitivement supprimées. Veuillez entrer votre mot de passe pour confirmer que vous souhaitez supprimer définitivement votre compte.",
 
-
-
-
+"All rights" => "Tous droits réservés",
 ];
 
 ?>

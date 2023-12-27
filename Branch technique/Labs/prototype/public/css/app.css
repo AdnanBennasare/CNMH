@@ -27,3 +27,9 @@ table tr td {
 .select2-container .select2-selection--single {
     height: 39px;
 }
+
+.flag-icon {
+    width: 28px; /* Adjust the size as needed */
+    margin-right: 5px;
+    margin-left: 10px; /* Optional: Add some space between the flag and the text */
+}

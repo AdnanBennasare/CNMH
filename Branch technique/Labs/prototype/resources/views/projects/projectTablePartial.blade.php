@@ -34,7 +34,7 @@
 
 
             <a href="{{route('tasks.index', ['query' => $project->Name])}}"
-                class="btn btn-sm btn-default mx-2">View Tasks</a>
+                class="btn btn-sm btn-default mx-2">{{ __('Pages-text.See Tasks')}}</a>
           
 
                 
@@ -132,8 +132,8 @@
             </div>
         </div>
         
-        {{-- <div class="float-left d-flex">
-            <a href="{{route('export.project')}}"style="height: 38px;" class="btn text-black border border-dark">
+        <div class="float-left d-flex">
+            <a href="{{route('export.project')}}" style="height: 38px;" class="btn text-black border border-dark">
                 {{ __('Pages-text.Export') }} <i class="fa-solid fa-upload pl-2"></i>
             </a>
             
@@ -159,7 +159,7 @@
                 $('#importForm').submit();
             });
         });
-        </script> --}}
+        </script>
    
  
         

@@ -31,22 +31,22 @@
                     <div class="form-group">
                         <label for="">title</label>
                         <input name="title" type="text" class="form-control"
-                            id="" placeholder="Enter Name" value="{{$task->title}}">
+                            id="" placeholder="Enter Name" value="{{$task->Title}}">
                     </div>
 
                     <div class="form-group">
                         <label for="">Description</label>
                         <input name="description" type="text" class="form-control"
-                            id="" placeholder="Description" value="{{$task->description}}">
+                            id="" placeholder="Description" value="{{$task->Description}}">
                     </div>
 
                     <label for="">Project</label>
-                    <select name="projectsid" class="form-control">
+                    <select name="project_id" class="form-control">
                         <option>-- Select Project --</option>
-                        <option selected value="{{ $selectedproject->id }}">{{$selectedproject->name}}</option>
+                        <option selected value="{{ $selectedproject->id }}">{{$selectedproject->Name}}</option>
                         @foreach ($projects as $project)
                         @if ($project->id !== $selectedproject->id) 
-                            <option value="{{ $project->id }}">{{ $project->name }}</option>
+                            <option value="{{ $project->id }}">{{ $project->Name }}</option>
                             @endif
                         @endforeach
                     </select>

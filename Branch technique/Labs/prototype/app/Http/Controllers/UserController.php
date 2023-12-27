@@ -61,7 +61,7 @@ public function create()
    
         $request->validate([
             'name' => ['required', 'string', 'max:25'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:25', 'unique:users'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
     
@@ -71,6 +71,8 @@ public function create()
             'role' => "member", // Set the role column to 'member'
             'password' => Hash::make($request->password),
         ]);
+        $user->assignRole('member');
+        $user->givePermissionTo('index-TasksController', 'index-ProjectController');
     
         // Return a redirect response with a success message and the name of the user added
         return redirect()->route('members.index')->with('success', 'Utilisateur ajouté avec succès');
@@ -108,45 +110,44 @@ public function show($id){
 }
 // ========= export ============
 
-// public function export() 
-// {
+public function export() 
+{
 
-//     $this->authorize("export", User::class);
-//    return Excel::download(new MemberExport, 'Member.xlsx');
+    
+   return Excel::download(new MemberExport, 'Member.xlsx');
 
-// }
+}
 
 
 // ========= import ============
 
-// public function import(Request $request)
-// {
-//     $this->authorize("import", User::class);
- 
+public function import(Request $request)
+{
 
-//     $request->validate([
-//         'members' => 'required|mimes:xlsx,xls',
-//     ]);
 
-//     $import = new MemberImport;
-//     try {
-//         $importedRows = Excel::import($import, $request->file('members'));
+    $request->validate([
+        'members' => 'required|mimes:xlsx,xls',
+    ]);
+
+    $import = new MemberImport;
+    try {
+        $importedRows = Excel::import($import, $request->file('members'));
     
-//         if($importedRows) {
+        if($importedRows) {
       
-//             $successMessage = 'Fichier importé avec succès.';
-//         } else {
-//             $successMessage = 'Pas de nouvelles données à importer.';
-//         }
+            $successMessage = 'Fichier importé avec succès.';
+        } else {
+            $successMessage = 'Pas de nouvelles données à importer.';
+        }
 
-//         return redirect('/members')->with('success', $successMessage);
-//     } catch (\Exception $e) {
-//         return redirect('/members')->with('error', 'une erreur a été acourd vérifier la syntaxe');
+        return redirect('/members')->with('success', $successMessage);
+    } catch (\Exception $e) {
+        return redirect('/members')->with('error', 'une erreur a été acourd vérifier la syntaxe');
        
-//         // return redirect('/members')->with('error', $e->getMessage());
-//     }
+        // return redirect('/members')->with('error', $e->getMessage());
+    }
 
-// }
+}
 
 
 }

@@ -2,8 +2,6 @@
        {{-- <link rel="stylesheet" href="{{ asset('../../css/app.css') }}"> --}}
        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
-       {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-Tv8Nd5U+CddUU6l7g0z5TAchHAZpdZFi9nLts2jI2ttsvSvDzY6K6daF7f+87Juo" crossorigin="anonymous"> --}}
-       {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
        <link rel="stylesheet" href="{{ asset('select2\select2.min.css') }}">
        
        {{-- <link rel="stylesheet" href="{{ asset('') }}"> --}}
@@ -19,8 +17,31 @@
                                 class="fas fa-bars"></i></a>
                     </li>
                 </ul>
-
+       
+                
+               
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown mt-2">
+                        <p class="navulnk dropdown-toggle cursor-pointer" data-toggle="dropdown" href="#">
+                            <i class="fas fa-globe text-lg"></i>
+                            {{__('Pages-text.language')}}
+                        </p>
+                        <span class="caret mt-1"></span>
+                    
+                        <div class="dropdown-menu dropdown-menu-right">
+                           
+                                <a class="dropdown-item" href="{{ route('localization', ['locale' => 'fr']) }}">French <img src="{{asset('imgs/fr.png')}}" alt="French Flag" class="flag-icon"></a>
+                                
+                                                 
+                            <div class="dropdown-divider"></div>
+                           
+                                <a class="dropdown-item" href="{{ route('localization', ['locale' => 'en']) }}">English<img src="{{asset('imgs/england2.png')}}" alt="English Flag" class="flag-icon"></a>
+                                
+                            
+                        </div>
+                    </li>
+                    
+                    
                     <li class="nav-item dropdown user-menu">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                             <img src="https://assets.infyom.com/logo/blue_logo_150x150.png"
@@ -51,6 +72,8 @@
                         </ul>
                     </li>
                 </ul>
+
+
             </nav>
 
             <!-- Left side column. contains the logo and sidebar -->
@@ -64,9 +87,9 @@
             <!-- Main Footer -->
             <footer class="main-footer">
                 <div class="float-right d-none d-sm-block">
-                    <b>Version</b> 3.1.0
+                    <b>Prototype</b>
                 </div>
-                <strong>Copyright &copy; 2014-2023 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+                <strong>Copyright 2023 & 2024 <a href="https://solicode.co"> Solicoders</a>.</strong> {{ __('Pages-text.All rights')}}
                 reserved.
             </footer>
         </div>

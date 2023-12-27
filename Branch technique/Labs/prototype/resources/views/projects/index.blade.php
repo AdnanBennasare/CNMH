@@ -4,11 +4,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{ __('Pages-text.Projects') }}</h1>
+                    <h1>{{ __('Pages-text.Projects list') }}</h1>
                 </div>
                 <div class="col-sm-6">
                     <div class="float-sm-right">
-                        <a href="{{route('projects.create')}}" class="btn btnAdd">Add New</a>
+                        @can('create-ProjectController')
+                        <a href="{{route('projects.create')}}" class="btn btnAdd">{{ __('Pages-text.Create a Project') }}</a>
+                        @endcan
                     </div>
                 </div>
             </div>

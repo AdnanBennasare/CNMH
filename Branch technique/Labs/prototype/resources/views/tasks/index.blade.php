@@ -5,11 +5,11 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>{{ __('Pages-text.Tasks') }}</h1>
+                <h1>{{ __('Pages-text.Tasks list') }}</h1>
             </div>
             <div class="col-sm-6">
                 <div class="float-sm-right">
-                    <a href="{{route('tasks.create')}}" class="btn btnAdd">Add New</a>
+                    <a href="{{route('tasks.create')}}" class="btn btnAdd">{{ __('Pages-text.Create a task') }}</a>
                 </div>
             </div>
         </div>
@@ -42,9 +42,9 @@
                         <div class="d-flex justify-content-between">
                   
 
-                            <div class="">
+                            <div style="margin-top:1px;">
                                 <!-- Set width for select element -->
-                                <select id="filter_by_projects" class="js-example-basic-single" name="project">
+                                <select id="filter_by_projects" class="js-example-basic-single" style="width:250px;" name="project">
                                     <option value="">{{ __('Pages-text.All Projects') }}</option>
                                     @foreach($projects as $project)
                                         {{-- Check if the current project is the selected projectID --}}
@@ -59,7 +59,7 @@
                             <div class="p-0">
                                 <div class="input-group input-group-sm ">
                                     <input type="text" id="searchInput" name="table_search" class="form-control"
-                                        placeholder="Search">
+                                        placeholder="{{ __('Pages-text.Search') }}">
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">
                                             <i class="fas fa-search"></i>

@@ -29,9 +29,7 @@ class TasksController extends Controller
 
         $ProjectName = $request->input('query');
         $query = $request->input('query');
-      
-
-        
+    
         $tasks = Task::with('project')
             ->where(function($queryBuilder) use ($query) {
                 $queryBuilder->where('title', 'like', '%' . $query . '%')
@@ -40,7 +38,6 @@ class TasksController extends Controller
                              });
             })
             ->paginate(2); 
-    
         if ($request->ajax()) {
             return view('tasks.taskTablePartial', compact('tasks'));
         } else {
@@ -74,13 +71,12 @@ class TasksController extends Controller
     // ======= edit =========
 
 
-
     public function edit($id){
         $projects = Project::all();
         $task = Task::find($id);
-        $selectedproject = Project::find($task->project_id);
-        // $projectName = $project->name;
-        return view('tasks.edit', compact('task', 'selectedproject', 'projects'));
+        //  i used belongsto tasks belong to project to here
+        $selectedproject = $task->project;
+        return view('tasks.update', compact('task', 'selectedproject', 'projects'));
      }
 
     // ======= update =========
@@ -92,6 +88,8 @@ class TasksController extends Controller
         if (!$task) {
             return redirect()->route('tasks.index')->with('error', 'tâche introuvable');
         }
+        // dd($request);
+
         $request->validate([
             'title' => 'required|unique:tasks,title,' . $id,
             'description' => 'nullable|string|max:1000',
@@ -106,8 +104,6 @@ class TasksController extends Controller
 
 
     // ======= show =========
-
-
     public function show($id){
         $task = Task::find($id);
         if($task){
@@ -131,38 +127,39 @@ class TasksController extends Controller
 }
 
 
+public function export() 
+{
+    dd('hey');
+   return Excel::download(new TaskExport, 'Tasks.xlsx');
+}
 
 
-    // public function import(Request $request)
-    // {
+    public function import(Request $request)
+    {
+    // dd('dd');
+        $request->validate([
+            'tasks' => 'required|mimes:xlsx,xls',
+        ]);
     
-    //     $request->validate([
-    //         'tasks' => 'required|mimes:xlsx,xls',
-    //     ]);
+        $import = new TaskImport;
     
-    //     $import = new TaskImport;
-    
-    //     try {
-    //         $importedRows = Excel::import($import, $request->file('tasks'));
+        try {
+            $importedRows = Excel::import($import, $request->file('tasks'));
         
-    //         if($importedRows) {
-    //             $successMessage = 'Fichier importé avec succès.';
-    //         } else {
-    //             $successMessage = 'Pas de nouvelles données à importer.';
-    //         }
+            if($importedRows) {
+                $successMessage = 'Fichier importé avec succès.';
+            } else {
+                $successMessage = 'Pas de nouvelles données à importer.';
+            }
     
-    //         return redirect('/tasks')->with('success', $successMessage);
-    //     } catch (\Exception $e) {
-    //         // Handle the exception, e.g., log the error or display an error message.
-    //         return redirect('/tasks')->with('error', 'une erreur a été acourd vérifier la syntaxe');
-    //     }
-    // }
+            return redirect('/tasks')->with('success', $successMessage);
+        } catch (\Exception $e) {
+            // Handle the exception, e.g., log the error or display an error message.
+            return redirect('/tasks')->with('error', 'une erreur a été acourd vérifier la syntaxe');
+        }
+    }
     
-    // public function export() 
-    // {
-    //    return Excel::download(new TaskExport, 'Tasks.xlsx');
-    // }
-
+   
 
   
  

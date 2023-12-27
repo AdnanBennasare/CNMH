@@ -52,17 +52,17 @@
             @method('delete')
 
             <div class="modal-header">
-                <h2 class="modal-title" id="confirmModalLabel">Are you sure you want to delete your account?</h2>
+                <h2 class="modal-title" id="confirmModalLabel">{{ __('Pages-text.Are you sure you want to delete your account?')}}</h2>
             </div>
 
             <div class="modal-body">
                 <p class="mt-1 text-sm text-muted">
-                    Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
+                  {{ __('Pages-text.Delete Acount Text')}}
                 </p>
 
                 <div class="mb-3">
-                    <label for="password" class="form-label sr-only">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    <label for="password" class="form-label sr-only">{{ __('Pages-text.Password')}}</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="{{ __('Pages-text.Password')}}">
                 </div>
 
                 <x-input-error :messages="$errors->userDeletion->get('password')" class="text-danger" />
@@ -70,8 +70,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-danger">Delete Account</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close" >{{ __('Pages-text.Cancel')}}</button>
+                <button type="submit" class="btn btn-danger">{{ __('Pages-text.Delete Acount')}}</button>
             </div>
         </form>
     </div>

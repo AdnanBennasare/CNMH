@@ -8,10 +8,11 @@ use App\Exports\ProjectExport;
 use App\Imports\ProjectImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Repositories\ProjectRepository;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateProjectRequest;
 
 
-class ProjectController extends Controller
+class ProjectController extends AppBaseController
 {
 
     
@@ -92,7 +93,7 @@ class ProjectController extends Controller
 
 
 
-//  =========== show ==========
+
 //    public function show($id){
 //     $project = Project::find($id);   
 //     $tasks = $project->tasks;
@@ -118,7 +119,6 @@ return redirect()->route('projects.index')->with('success', 'Projet supprimé av
 
      public function export() 
      {
-        $this->authorize('export', Project::class);
         return Excel::download(new ProjectExport, 'Projects.xlsx');
      }
 

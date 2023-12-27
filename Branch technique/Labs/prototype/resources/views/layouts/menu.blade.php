@@ -5,18 +5,19 @@
         <p>Home</p>
     </a>
 
-    <a href="{{ route('projects.index') }}" class="nav-link {{ Request::is('projects') ? 'active' : '' }}">
-        <i class="fas fa-project-diagram"></i>
-        <p>projects</p>
+    <a href="{{ route('projects.index') }}" class="nav-link {{ Request::is('projects') ? 'active' : '' }} ml-1">
+        <i class="fas fa-project-diagram "></i>
+        <p class="ml-2">{{ __('Pages-text.Projects') }}</p>
     </a>
 
-    <a href="{{ route('tasks.index') }}" class="nav-link {{ Request::is('tasks') ? 'active' : '' }}">
-        <i class="fas fa-project-diagram"></i>
-        <p>tasks</p>
+    <a href="{{ route('tasks.index') }}" class="nav-link {{ Request::is('tasks') ? 'active' : '' }} ml-1">
+        <i class="fas fa-tasks"></i> <!-- Change the icon for tasks -->
+        <p class="ml-2" >{{ __('Pages-text.Tasks') }}</p>
     </a>
 
-    <a href="{{ route('members.index') }}" class="nav-link {{ Request::is('members') ? 'active' : '' }}">
-        <i class="fas fa-project-diagram"></i>
-        <p>members</p>
+    <a href="{{ route('members.index') }}" class="nav-link {{ Request::is('members') ? 'active' : '' }} ml-1">
+        <i class="fas fa-users"></i> <!-- Change the icon for members -->
+        <p class="ml-1">{{ __('Pages-text.Members') }}</p>
     </a>
 </li>
+

@@ -7,11 +7,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{ __('Pages-text.Members') }}</h1>
+                    <h1>{{ __('Pages-text.Members list') }}</h1>
                 </div>
                 <div class="col-sm-6">
                     <div class="float-sm-right">
-                        <a href="{{route('members.create')}}" class="btn btnAdd">Add New membre</a>
+                        <a href="{{route('members.create')}}" class="btn btnAdd">{{ __('Pages-text.Create a Member') }}</a>
                     </div>
                 </div>
             </div>
