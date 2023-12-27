@@ -29,8 +29,10 @@
 
     {{-- <td class="text-center"> --}}
         <td class="text-center">
+            @can('edit-ProjectController')
             <a href="{{route('projects.edit', $project->id)}}" class="btn btn-sm btn-default"><i
                     class="fa-solid fa-pen-to-square"></i></a>
+            @endif
 
 
             <a href="{{route('tasks.index', ['query' => $project->Name])}}"
@@ -42,10 +44,15 @@
 
 
                  
-
+                @can('destroy-ProjectController')
                     <button type="button" class="btn btn-danger delete-project" data-toggle="modal" data-target="#modal-default" data-project-id="{{ $project->id }}" data-project-name="{{ $project->Name }}" >
                 <i class="fa-solid fa-trash-can"></i>
                     </button>
+                @endif
+
+                <a class="btn btn-primary btn-sm" href="{{route('projects.show', $project->id)}}">
+                    <i class="fas fa-folder"></i>          
+                </a> 
 
         </td>
 
@@ -131,20 +138,23 @@
             @endif              
             </div>
         </div>
+        @can('export-ProjectController')
         
         <div class="float-left d-flex">
             <a href="{{route('export.project')}}" style="height: 38px;" class="btn text-black border border-dark">
                 {{ __('Pages-text.Export') }} <i class="fa-solid fa-upload pl-2"></i>
             </a>
+@endcan
             
   
+        @can('import-ProjectController')
             
             <form action="{{ route('import.project') }}" class="pl-1" method="post" enctype="multipart/form-data" id="importForm">
                 @csrf 
                 <input type="file" name="projects" id="formFileInput" style="position: absolute; left: -9999px;">
                 <button type="button" id="fileButton" class="btn text-black border border-dark">{{ __('Pages-text.Import') }} <i class="fa-solid fa-download pl-2"></i></button>
             </form>
-
+@endcan
             
         </div>
 

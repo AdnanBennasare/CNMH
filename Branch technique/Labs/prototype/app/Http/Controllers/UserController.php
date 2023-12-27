@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\RedirectResponse;
 
 
-class UserController extends Controller
+class UserController extends AppBaseController
 {
 
     
@@ -72,7 +72,7 @@ public function create()
             'password' => Hash::make($request->password),
         ]);
         $user->assignRole('member');
-        $user->givePermissionTo('index-TasksController', 'index-ProjectController');
+        $user->givePermissionTo('index-TasksController', 'index-ProjectController', 'show-ProjectController', 'show-TasksController');
     
         // Return a redirect response with a success message and the name of the user added
         return redirect()->route('members.index')->with('success', 'Utilisateur ajouté avec succès');

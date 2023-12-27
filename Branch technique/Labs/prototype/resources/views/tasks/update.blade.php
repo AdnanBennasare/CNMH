@@ -54,8 +54,8 @@
                 </div>
 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">edit project</button>
-                    <a href="" class="btn btn-default">Cancel</a>
+                    <button type="submit" class="btn btn-info">edit project</button>
+                    <a href="{{route('tasks.index')}}" class="btn btn-default">Cancel</a>
                 </div>
             </form>
             </div>

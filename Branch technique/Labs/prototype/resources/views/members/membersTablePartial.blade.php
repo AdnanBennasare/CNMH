@@ -12,25 +12,28 @@
     
 
             <tbody id="tbodyresults">
-                @foreach($members as $member)
-        
-                <tr>
-                    <td>{{ $member->name }}</td>
-                    <td>{{ $member->email }}</td>
-            
-                    <td class="text-center">
-                        <a class="btn btn-primary btn-sm" href="{{route('members.show', $member->id)}}">
-                            <i class="fas fa-folder"></i>
-                        </a>
-                
+          
 
-                        <button type="button" class="btn btn-danger delete-member" data-toggle="modal" data-target="#modal-default" data-member-id="{{ $member->id }}" data-member-name="{{ $member->name }}" >
-                            <i class="fa-solid fa-trash-can"></i>
-                         </button>
-                    </td>
-                </tr>
-        
+                @foreach($members as $member)
+                @unless($member->hasRole('project_leader'))
+                    <tr>
+                        <td>{{ $member->name }}</td>
+                        <td>{{ $member->email }}</td>
+            
+                        <td class="text-center">
+                            <a class="btn btn-primary btn-sm" href="{{ route('members.show', $member->id) }}">
+                                <i class="fas fa-folder"></i>
+                            </a>
+            
+                            <button type="button" class="btn btn-danger delete-member" data-toggle="modal" data-target="#modal-default" data-member-id="{{ $member->id }}" data-member-name="{{ $member->name }}">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </td>
+                    </tr>
+                @endunless
             @endforeach
+            
+            
             </tbody>
         </table>
     </div>

@@ -43,6 +43,6 @@ class UserSeeder extends Seeder
                 'updated_at' => Carbon::now(),
         ])->assignRole('member');
 
-        $user->givePermissionTo('index-TasksController', 'index-ProjectController');
+        $user->givePermissionTo('index-TasksController', 'index-ProjectController', 'show-ProjectController', 'show-TasksController');
     }
 }

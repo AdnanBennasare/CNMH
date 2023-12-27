@@ -28,7 +28,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('projects', ProjectController::class)->except(['show']);
+Route::resource('projects', ProjectController::class);
 Route::resource('tasks', TasksController::class);
 Route::resource('members', UserController::class);
 
@@ -52,4 +52,5 @@ Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.up
 Route::put('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Auth::routes();
+Auth::routes(['register' => false]);
+

@@ -94,15 +94,14 @@ class ProjectController extends AppBaseController
 
 
 
-//    public function show($id){
-//     $project = Project::find($id);   
-//     $tasks = $project->tasks;
-//     if($project){
-//         return view('tasks.index', compact('project', 'tasks'));
-//     }else{
-//         abort(404);
-//     }
-// }
+   public function show($id){
+    $project = Project::find($id);   
+    if($project){
+        return view('projects.view', compact('project'));
+    }else{
+        abort(404);
+    }
+}
 
 
 // ========== destroy ========

@@ -22,23 +22,29 @@
     
         {{ $shortenedDescription }} @if ($remainingWords > 0) ... @endif
     </td>
+    {{-- relation --}}
     <td>{{ $task->project->Name }}</td>   
-
     <td class="project-actions text-center">
-    
+
         <a class="btn btn-primary btn-sm" href="{{route('tasks.show', $task->id)}}">
             <i class="fas fa-folder"></i>
         </a>
+
+        @can('edit-TasksController')
         {{-- edit --}}
         <a class="btn btn-info btn-sm" href="{{route('tasks.edit', $task->id)}}">
             <i class="fas fa-pencil-alt"></i>    
         </a>
+        @endcan
   
   
+        @can('destroy-TasksController')
               
         <button type="button" class="btn btn-danger delete-task" data-toggle="modal" data-target="#modal-default" data-task-id="{{ $task->id }}" data-task-title="{{ $task->Title }}" >
             <i class="fa-solid fa-trash-can"></i>
                 </button>
+        @endcan
+
     </td>
 </tr>
 @endforeach
@@ -123,10 +129,13 @@
         </div>                                          
        
         <div class="float-left d-flex">
+        @can('export-TasksController')
+
             <a href="{{ route('export.task') }}"  style="height: 38px;" class="btn text-black border border-dark">
                 {{ __('Pages-text.Export') }} <i class="fa-solid fa-upload pl-2"></i>
             </a>
-            
+            @endcan
+            @can('import-TasksController')
   
             
             <form action="{{ route('import.task') }}" class="pl-1" method="post" enctype="multipart/form-data" id="importForm">
@@ -134,6 +143,7 @@
                 <input type="file" name="tasks" id="formFileInputtasks" style="position: absolute; left: -9999px;">
                 <button type="button" id="importbutton" class="btn text-black border border-dark">{{ __('Pages-text.Import') }} <i class="fa-solid fa-download pl-2"></i></button>
             </form>
+            @endcan
 
             
         </div>  

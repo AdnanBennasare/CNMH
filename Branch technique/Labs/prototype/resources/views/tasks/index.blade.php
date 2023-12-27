@@ -9,7 +9,9 @@
             </div>
             <div class="col-sm-6">
                 <div class="float-sm-right">
+                    @can('create-TasksController')
                     <a href="{{route('tasks.create')}}" class="btn btnAdd">{{ __('Pages-text.Create a task') }}</a>
+                    @endcan
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\CreateTaskRequest;
 
 
-class TasksController extends Controller
+class TasksController extends AppBaseController
 {
 
     private $taskRepository;
@@ -29,7 +29,8 @@ class TasksController extends Controller
 
         $ProjectName = $request->input('query');
         $query = $request->input('query');
-    
+
+        // ===================== i used belongsto tasks belong to project to here  =========
         $tasks = Task::with('project')
             ->where(function($queryBuilder) use ($query) {
                 $queryBuilder->where('title', 'like', '%' . $query . '%')
@@ -38,6 +39,8 @@ class TasksController extends Controller
                              });
             })
             ->paginate(2); 
+        
+
         if ($request->ajax()) {
             return view('tasks.taskTablePartial', compact('tasks'));
         } else {
@@ -70,11 +73,10 @@ class TasksController extends Controller
 
     // ======= edit =========
 
-
     public function edit($id){
         $projects = Project::all();
         $task = Task::find($id);
-        //  i used belongsto tasks belong to project to here
+        // ===================== i used belongsto tasks belong to project to here  =========
         $selectedproject = $task->project;
         return view('tasks.update', compact('task', 'selectedproject', 'projects'));
      }
@@ -107,8 +109,8 @@ class TasksController extends Controller
     public function show($id){
         $task = Task::find($id);
         if($task){
-            $projectId = $task->Project_Id;
-            $projectName = Project::find($projectId)->Name;   
+            // ============== relation belongsto ===============
+            $projectName = $task->project->Name;
             return view('tasks.view', compact('projectName', 'task'));
         }else {
             return abort(404);

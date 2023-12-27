@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">{{ __('Pages-text.Task Details') }}</h1>
+                    <h1 class="m-0">{{ __('Pages-text.Project Details') }}</h1>
                 </div><!-- /.col -->
 
             </div><!-- /.row -->
@@ -26,7 +26,7 @@
             <!-- general form elements -->
             <div class="col-md-12 card card-secondary card-create">
               <div class="card-header">
-                <h3 class="card-title">{{ __('Pages-text.Show Task') }}</h3>
+                <h3 class="card-title">{{ __('Pages-text.View Project Details') }}</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -35,50 +35,62 @@
 
                   <div class="card card-secondary card-outline">
                     <div class="card-header">
-                      <h5 class="card-title m-0">{{ __('Pages-text.Task Title') }}</h5>
-                    </div>
-                    <div class="card-body">
-
-
-                      <p class="card-text">{{$task->Title}}</p>
-
-                    </div>
-                  </div>
-                  <div class="card card-secondary card-outline">
-                    <div class="card-header">
-                      <h5 class="card-title m-0">{{ __('Pages-text.Task Description') }}</h5>
-                    </div>
-                    <div class="card-body">
-
-
-                      <p class="card-text">{{$task->Description}}</p>
-
-                    </div>
-                  </div>
-                  <div class="card card-secondary card-outline">
-                    <div class="card-header">
                       <h5 class="card-title m-0">{{ __('Pages-text.Project Name') }}</h5>
                     </div>
                     <div class="card-body">
 
 
-                      <p class="card-text">{{$projectName}}</p>
+                      <p class="card-text">{{$project->Name}}</p>
 
                     </div>
-                  </div>    
+                  </div>
+                  <div class="card card-secondary card-outline">
+                    <div class="card-header">
+                      <h5 class="card-title m-0">{{ __('Pages-text.Project Description') }}</h5>
+                    </div>
+                    <div class="card-body">
+
+
+                      <p class="card-text">{{$project->Description}}</p>
+
+                    </div>
+                  </div>
+                  <div class="card card-secondary card-outline">
+                    <div class="card-header">
+                      <h5 class="card-title m-0">{{ __('Pages-text.Start date') }}</h5>
+                    </div>
+                    <div class="card-body">
+
+
+                      <p class="card-text">{{$project->Start_Date}}</p>
+
+                    </div>
+                  </div>
+                  <div class="card card-secondary card-outline">
+                    <div class="card-header">
+                      <h5 class="card-title m-0">{{ __('Pages-text.End date') }}</h5>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">{{$project->End_Date}}</p>
+                    </div>
+                  </div>
+
+
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
                     <div class="d-flex">
-                         @can('edit-TasksController')
                         <div class="p-2">
-                            <a href="{{route('tasks.edit', $task->id)}}" class="btn btn-warning">{{ __('Pages-text.Modify') }}</a>
+            @can('edit-ProjectController')
+
+                            <a href="{{route('projects.edit', $project->id)}}" class="btn btn-warning">{{ __('Pages-text.Edit Project') }}</a>
+            @endcan
+
                         </div>
-                        @endcan
 
                         <div class="ml-auto p-2">
-                            <a href="{{route('tasks.index')}}" class="btn btn-secondary">{{ __('Pages-text.Cancel') }}</a>
+                            <a href="{{route('projects.index')}}" class="btn btn-secondary">{{ __('Pages-text.Cancel') }}</a>
                         </div>
                       </div>
 
@@ -92,6 +104,7 @@
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+</div>
 
 
 

@@ -14,10 +14,11 @@
         <i class="fas fa-tasks"></i> <!-- Change the icon for tasks -->
         <p class="ml-2" >{{ __('Pages-text.Tasks') }}</p>
     </a>
-
+@can('index-UserController')
     <a href="{{ route('members.index') }}" class="nav-link {{ Request::is('members') ? 'active' : '' }} ml-1">
         <i class="fas fa-users"></i> <!-- Change the icon for members -->
         <p class="ml-1">{{ __('Pages-text.Members') }}</p>
     </a>
+    @endcan
 </li>
 
