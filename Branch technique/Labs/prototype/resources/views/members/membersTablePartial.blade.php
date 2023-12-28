@@ -13,7 +13,6 @@
 
             <tbody id="tbodyresults">
           
-
                 @foreach($members as $member)
                 @unless($member->hasRole('project_leader'))
                     <tr>
@@ -31,7 +30,10 @@
                         </td>
                     </tr>
                 @endunless
-            @endforeach
+
+          
+             @endforeach
+          
             
             
             </tbody>

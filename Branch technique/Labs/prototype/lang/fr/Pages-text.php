@@ -147,6 +147,8 @@ return [
 "Delete Acount Text" => "Une fois votre compte supprimé, toutes ses ressources et données seront définitivement supprimées. Veuillez entrer votre mot de passe pour confirmer que vous souhaitez supprimer définitivement votre compte.",
 
 "All rights" => "Tous droits réservés",
+"No Products found" => "aucun produit trouvé",
+"No Members found" => "aucun membre trouvé"
 ];
 
 ?>

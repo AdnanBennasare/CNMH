@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             <tbody id="tbodyresults">
-                @foreach($projects->items() as $project)
+                @forelse($projects->items() as $project)
 <tr>
     <td>{{ $project->Name }}</td>
     <td>
@@ -27,7 +27,6 @@
     <td>{{ $project->Start_Date }}</td>
     <td>{{ $project->End_Date }}</td>
 
-    {{-- <td class="text-center"> --}}
         <td class="text-center">
             @can('edit-ProjectController')
             <a href="{{route('projects.edit', $project->id)}}" class="btn btn-sm btn-default"><i
@@ -58,7 +57,14 @@
 
  
 </tr>
-@endforeach
+
+@empty
+<tr class="text-center">
+    <td colspan="5">
+        {{ __('Pages-text.No Products found') }}
+    </td>
+</tr>
+@endforelse
             </tbody>
         </table>
     </div>

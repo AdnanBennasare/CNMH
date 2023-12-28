@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody id="tbodyresults">
-                @foreach($tasks as $task)
+                @forelse($tasks as $task)
 <tr>
     <td>{{ $task->Title }}</td>
     <td>
@@ -47,7 +47,15 @@
 
     </td>
 </tr>
-@endforeach
+@empty
+<tr class="text-center">
+    <td colspan="4">
+        {{ __('Pages-text.No Products found') }}
+    </td>
+</tr>
+    
+
+@endforelse
             </tbody>
         </table>
     </div>
